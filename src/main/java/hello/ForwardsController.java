@@ -44,26 +44,15 @@ public class ForwardsController {
 
         System.out.println("--> GPIO state should be: ON");
 
-        Thread.sleep(5000);
+        motor1A.high();
+        motor1B.low();
+        motor1E.high();
 
-        motor1A.low();
-        System.out.println("--> GPIO state should be: OFF");
-
-        Thread.sleep(5000);
-
-        // toggle the current state of gpio pin #01 (should turn on)
-        motor1A.toggle();
-        System.out.println("--> GPIO state should be: ON");
+        motor2A.high();
+        motor2B.low();
+        motor2E.high();
 
         Thread.sleep(5000);
-
-        motor1A.toggle();
-        System.out.println("--> GPIO state should be: OFF");
-
-        Thread.sleep(5000);
-
-        System.out.println("--> GPIO state should be: ON for only 1 second");
-        motor1A.pulse(1000, true); // set second argument to 'true' use a blocking call
 
         gpio.shutdown();
 
