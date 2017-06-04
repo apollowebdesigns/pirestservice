@@ -1,5 +1,6 @@
 package hello;
 
+import com.pi4j.io.gpio.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,11 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 //GPIO imports
-import com.pi4j.io.gpio.GpioController;
-import com.pi4j.io.gpio.GpioFactory;
-import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
 
 /**
  * Created by andrewevans on 04/06/2017.
@@ -23,7 +19,7 @@ public class ForwardsController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/hits/forwards")
-    public Response response(@RequestParam(value="name", defaultValue="World") String name) {
+    public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
 
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
