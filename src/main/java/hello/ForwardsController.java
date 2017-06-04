@@ -27,9 +27,12 @@ public class ForwardsController {
 
         final GpioPinDigitalOutput motor1A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "MyLED", PinState.HIGH);
         final GpioPinDigitalOutput motor1B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "MyLED", PinState.HIGH);
+        final GpioPinDigitalOutput motor1E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "MyLED", PinState.HIGH);
 
         // set shutdown state for this pin
         motor1A.setShutdownOptions(true, PinState.LOW);
+        motor1B.setShutdownOptions(true, PinState.LOW);
+        motor1E.setShutdownOptions(true, PinState.LOW);
 
         System.out.println("--> GPIO state should be: ON");
 
