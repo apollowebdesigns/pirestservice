@@ -1,0 +1,7 @@
+.button-background {
+    background-color: #bdbdbd;
+    padding: 20px;
+    border: solid black;
+    border-radius: 7px;
+    box-shadow: 6px 6px 5px #888888;
+}
