@@ -18,11 +18,16 @@ public class ForwardsController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/hits/forwards")
-    public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-
-        Forwards.moveForwards();
-
-        return new Response(counter.incrementAndGet(),
-                String.format(template, name));
+    public Response response(@RequestParam(value="name", defaultValue="World") String name) {
+        try {
+            Forwards.moveForwards();
+        } catch (GpioException e ) {
+            System.out.println("GpioException");
+        } catch (InterruptedException e) {
+            System.out.println(e.fillInStackTrace());
+        }   finally {
+            return new Response(counter.incrementAndGet(),
+                    String.format(template, name));
+        }
     }
 }

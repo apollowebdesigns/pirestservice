@@ -9,7 +9,7 @@ import java.util.List;
  * Created by andrewevans on 06/06/2017.
  */
 public class Forwards {
-    public static void moveForwards() throws InterruptedException {
+    public static void moveForwards() {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         final GpioController gpio = GpioFactory.getInstance();
@@ -50,13 +50,19 @@ public class Forwards {
         motor2B.low();
         motor2E.high();
 
-        Thread.currentThread().sleep(5000);
 
-        gpio.shutdown();
-        //shut down the pins for reuse
-        for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
-        gpio.shutdown();
-
-        System.out.println("Exiting ControlGpioExample");
+        try {
+            Thread.sleep(5000);
+        } catch (GpioException e) {
+            System.out.println("pi problem");
+        } catch (InterruptedException e) {
+            System.out.println("interrupted!!!");
+        }   finally {
+            gpio.shutdown();
+            //shut down the pins for reuse
+            for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+            gpio.shutdown();
+            System.out.println("Exiting ControlGpioExample");
+        }
     }
 }
