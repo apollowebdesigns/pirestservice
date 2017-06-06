@@ -50,11 +50,12 @@ public class Forwards {
         motor2B.low();
         motor2E.high();
 
-        Thread.sleep(5000);
+        Thread.currentThread().sleep(5000);
 
         gpio.shutdown();
         //shut down the pins for reuse
         for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+        gpio.shutdown();
 
         System.out.println("Exiting ControlGpioExample");
     }
