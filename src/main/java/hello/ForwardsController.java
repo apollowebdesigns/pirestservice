@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 //GPIO imports
@@ -33,6 +35,15 @@ public class ForwardsController {
         final GpioPinDigitalOutput motor2B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.HIGH);
         final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.HIGH);
 
+        List<GpioPinDigitalOutput> pins = new ArrayList<>();
+
+        pins.add(motor1A);
+        pins.add(motor1B);
+        pins.add(motor1E);
+        pins.add(motor2A);
+        pins.add(motor2B);
+        pins.add(motor2E);
+
         // set shutdown state for this pin
         motor1A.setShutdownOptions(true, PinState.LOW);
         motor1B.setShutdownOptions(true, PinState.LOW);
@@ -55,6 +66,8 @@ public class ForwardsController {
         Thread.sleep(5000);
 
         gpio.shutdown();
+        //shut down the pins for reuse
+        for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
 
         System.out.println("Exiting ControlGpioExample");
 
