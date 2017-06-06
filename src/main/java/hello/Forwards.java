@@ -32,13 +32,13 @@ public class Forwards {
         pins.add(motor2E);
 
         // set shutdown state for this pin
-        motor1A.setShutdownOptions(true, PinState.LOW);
-        motor1B.setShutdownOptions(true, PinState.LOW);
-        motor1E.setShutdownOptions(true, PinState.LOW);
+        motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
-        motor2A.setShutdownOptions(true, PinState.LOW);
-        motor2B.setShutdownOptions(true, PinState.LOW);
-        motor2E.setShutdownOptions(true, PinState.LOW);
+        motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
         System.out.println("--> GPIO state should be: ON");
 
