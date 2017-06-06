@@ -1,3 +1,4 @@
+cd ~
 cd Documents/
 cd springpi/
 cd pirestservice/
