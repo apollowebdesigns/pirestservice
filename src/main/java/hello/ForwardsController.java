@@ -21,11 +21,7 @@ public class ForwardsController {
     public Response response(@RequestParam(value="name", defaultValue="World") String name) {
         try {
             Forwards.moveForwards();
-        } catch (GpioException e ) {
-            System.out.println("GpioException");
-        } catch (InterruptedException e) {
-            System.out.println(e.fillInStackTrace());
-        }   finally {
+        } finally {
             return new Response(counter.incrementAndGet(),
                     String.format(template, name));
         }
