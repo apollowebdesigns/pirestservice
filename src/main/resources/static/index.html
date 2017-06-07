@@ -73,6 +73,7 @@
                 </div>
                 <h4>Which way is the pi going?</h4>
                 <div ng-bind="appCtrl.requestedData"></div>
+                <button class="btn blue-grey-text btn-large" ng-click="appCtrl.killPi()">Exit</button>
             </div>
         </div>
 
@@ -142,4 +143,5 @@
 <script src= "scripts/AppController.js"></script>
 <script src= "scripts/ledService.js"></script>
 <script src= "scripts/driveService.js"></script>
+<script src= "scripts/exitService.js"></script>
 </html>

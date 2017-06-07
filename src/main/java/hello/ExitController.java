@@ -11,6 +11,6 @@ public class ExitController implements ControllerResponse {
     @RequestMapping("/hits/kill")
     public Response response() {
         System.exit(0);
-        return null;
+        return new Response(2, "testing testing");
     }
 }

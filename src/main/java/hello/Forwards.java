@@ -63,6 +63,7 @@ public class Forwards {
             for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
             gpio.shutdown();
             System.out.println("Exiting ControlGpioExample");
+            System.exit(0);
         }
     }
 }
