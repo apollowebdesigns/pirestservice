@@ -61,9 +61,9 @@ public class Forwards {
             gpio.shutdown();
             //shut down the pins for reuse
             for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+            System.out.println("has the gpio shutdown correctly?");
+            System.out.println(gpio.isShutdown());
             gpio.shutdown();
-            System.out.println("Exiting ControlGpioExample");
-            System.exit(0);
         }
     }
 }
