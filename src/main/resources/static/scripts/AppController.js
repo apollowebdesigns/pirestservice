@@ -2,7 +2,7 @@ angular
     .module('app')
     .controller('AppController', AppController);
 
-AppController.$inject = ['ledService', 'driveService'];
+AppController.$inject = ['ledService', 'driveService', 'exitService'];
 
 function AppController(ledService, driveService, exitService) {
     var vm = this;

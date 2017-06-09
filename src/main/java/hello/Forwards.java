@@ -60,7 +60,7 @@ public class Forwards {
         }   finally {
             gpio.shutdown();
             //shut down the pins for reuse
-            for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+            pins.forEach(pin -> gpio.unprovisionPin(pin));
             System.out.println("has the gpio shutdown correctly?");
             System.out.println(gpio.isShutdown());
             gpio.shutdown();
