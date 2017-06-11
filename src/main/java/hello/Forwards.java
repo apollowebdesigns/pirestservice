@@ -48,6 +48,7 @@ public class Forwards {
             System.out.println("before thread");
             Thread.sleep(5000);
             System.out.println("after thread");
+            System.out.println(Thread.activeCount());
         } catch (GpioException e) {
             System.out.println("pi problem");
         } catch (InterruptedException e) {
