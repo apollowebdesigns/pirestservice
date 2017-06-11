@@ -31,6 +31,14 @@ public class Forwards {
         pins.add(motor2B);
         pins.add(motor2E);
 
+        motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
+        motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
         // set shutdown state for this pin
 
         System.out.println("--> GPIO state should be: ON");
@@ -54,7 +62,7 @@ public class Forwards {
         } catch (InterruptedException e) {
             System.out.println("interrupted!!!");
         }   finally {
-
+            System.out.println("before second shutdown options");
             //Thread killed
             motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
             motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
