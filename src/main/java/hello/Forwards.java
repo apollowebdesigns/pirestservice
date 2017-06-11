@@ -9,7 +9,7 @@ import java.util.List;
  * Created by andrewevans on 06/06/2017.
  */
 public class Forwards {
-    public static void moveForwards() {
+    public static void moveForwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         final GpioController gpio = GpioFactory.getInstance();
@@ -22,6 +22,14 @@ public class Forwards {
         final GpioPinDigitalOutput motor2B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.HIGH);
         final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.HIGH);
 
+        motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
+        motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+        motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
         List<GpioPinDigitalOutput> pins = new ArrayList<>();
 
         pins.add(motor1A);
@@ -30,14 +38,6 @@ public class Forwards {
         pins.add(motor2A);
         pins.add(motor2B);
         pins.add(motor2E);
-
-        motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
-        motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-        motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
         // set shutdown state for this pin
 
@@ -52,23 +52,16 @@ public class Forwards {
         motor2E.high();
 
 
-        try {
-            System.out.println("before thread");
-            Thread.sleep(5000);
-            System.out.println("after thread");
-            System.out.println(Thread.activeCount());
-        } catch (GpioException e) {
-            System.out.println("pi problem");
-        } catch (InterruptedException e) {
-            System.out.println("interrupted!!!");
-        }   finally {
-            System.out.println("before second shutdown options");
-            //shut down the pins for reuse
-            gpio.unprovisionPin();
-            for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
-            System.out.println("has the gpio shutdown correctly?");
-            System.out.println(gpio.isShutdown());
-            gpio.shutdown();
-        }
+        System.out.println("before thread");
+        Thread.sleep(5000);
+        System.out.println("after thread");
+        System.out.println(Thread.activeCount());
+        System.out.println("before second shutdown options");
+        //shut down the pins for reuse
+        gpio.unprovisionPin();
+        for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+        System.out.println("has the gpio shutdown correctly?");
+        System.out.println(gpio.isShutdown());
+        gpio.shutdown();
     }
 }
