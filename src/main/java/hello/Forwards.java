@@ -63,7 +63,6 @@ public class Forwards {
             System.out.println("interrupted!!!");
         }   finally {
             System.out.println("before second shutdown options");
-            gpio.shutdown();
             //shut down the pins for reuse
             gpio.unprovisionPin();
             for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
