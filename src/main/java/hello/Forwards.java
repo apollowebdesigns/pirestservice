@@ -31,6 +31,16 @@ public class Forwards {
         pins.add(motor2B);
         pins.add(motor2E);
 
+        List<String> stringPins = new ArrayList<>();
+
+        //strings pins
+        stringPins.add("motor1A");
+        stringPins.add("motor1B");
+        stringPins.add("motor1E");
+        stringPins.add("motor2A");
+        stringPins.add("motor2B");
+        stringPins.add("motor2E");
+
         // set shutdown state for this pin
         motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
@@ -60,7 +70,11 @@ public class Forwards {
         }   finally {
             gpio.shutdown();
             //shut down the pins for reuse
+            gpio.unprovisionPin();
             pins.forEach(pin -> gpio.unprovisionPin(pin));
+            stringPins.forEach(pinString -> gpio.getProvisionedPin(pinString));
+            System.out.println("unprovisoned pins are");
+            stringPins.forEach(pinString -> System.out.println(gpio.getProvisionedPin(pinString)));
             System.out.println("has the gpio shutdown correctly?");
             System.out.println(gpio.isShutdown());
             gpio.shutdown();
