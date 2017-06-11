@@ -74,7 +74,7 @@ public class Forwards {
             pins.forEach(pin -> gpio.unprovisionPin(pin));
             //stringPins.forEach(pinString -> gpio.getProvisionedPin(pinString));
             //System.out.println("unprovisoned pins are");
-            stringPins.forEach(pinString -> System.out.println(gpio.getProvisionedPin(pinString)));
+            //stringPins.forEach(pinString -> System.out.println(gpio.getProvisionedPin(pinString)));
             System.out.println("has the gpio shutdown correctly?");
             System.out.println(gpio.isShutdown());
             gpio.shutdown();
