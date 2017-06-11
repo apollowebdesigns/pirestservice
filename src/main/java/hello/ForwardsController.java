@@ -19,8 +19,26 @@ public class ForwardsController {
 
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) {
+        Runnable moveForward = new Runnable() {
+
+            @Override
+            public void run() {
+                Forwards forwards = new Forwards();
+                try {
+                    forwards.moveForwards();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread runningThread = new Thread(moveForward);
+        runningThread.start();
         try {
-            Forwards.moveForwards();
+            runningThread.join();
+        } catch (InterruptedException e) {
+            System.out.println("error happened");
+            e.printStackTrace();
         } finally {
             return new Response(counter.incrementAndGet(),
                     String.format(template, name));

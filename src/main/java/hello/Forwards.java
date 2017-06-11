@@ -9,7 +9,7 @@ import java.util.List;
  * Created by andrewevans on 06/06/2017.
  */
 public class Forwards {
-    public static void moveForwards() throws InterruptedException {
+    public void moveForwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         final GpioController gpio = GpioFactory.getInstance();
