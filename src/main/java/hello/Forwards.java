@@ -32,13 +32,6 @@ public class Forwards {
         pins.add(motor2E);
 
         // set shutdown state for this pin
-//        motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-//        motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-//        motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-//
-//        motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-//        motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-//        motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
         System.out.println("--> GPIO state should be: ON");
 
@@ -52,12 +45,24 @@ public class Forwards {
 
 
         try {
+            System.out.println("before thread");
             Thread.sleep(5000);
+            System.out.println("after thread");
         } catch (GpioException e) {
             System.out.println("pi problem");
         } catch (InterruptedException e) {
             System.out.println("interrupted!!!");
         }   finally {
+
+            //Thread killed
+            motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+            motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+            motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
+            motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+            motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+            motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+
             gpio.shutdown();
             //shut down the pins for reuse
             gpio.unprovisionPin();
