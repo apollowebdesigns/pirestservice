@@ -63,15 +63,6 @@ public class Forwards {
             System.out.println("interrupted!!!");
         }   finally {
             System.out.println("before second shutdown options");
-            //Thread killed
-            motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-            motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-            motor1E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
-            motor2A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-            motor2B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-            motor2E.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
             gpio.shutdown();
             //shut down the pins for reuse
             gpio.unprovisionPin();
