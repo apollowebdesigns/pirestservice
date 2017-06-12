@@ -1,6 +1,7 @@
 #!/bin/sh
 # init.sh
 cd ~
+cd /home/pi/
 cd Documents/
 cd springpi/
 cd pirestservice/
