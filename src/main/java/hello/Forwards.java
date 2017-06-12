@@ -14,13 +14,23 @@ public class Forwards {
 
         final GpioController gpio = GpioFactory.getInstance();
 
-        final GpioPinDigitalOutput motor1A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "MyLED", PinState.HIGH);
-        final GpioPinDigitalOutput motor1B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "MyLED", PinState.HIGH);
-        final GpioPinDigitalOutput motor1E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "MyLED", PinState.HIGH);
+        final GpioPinDigitalOutput motor1A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "MyLED", PinState.LOW);
+        final GpioPinDigitalOutput motor1B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "MyLED", PinState.LOW);
+        final GpioPinDigitalOutput motor1E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06, "MyLED", PinState.LOW);
 
-        final GpioPinDigitalOutput motor2A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "MyLED", PinState.HIGH);
-        final GpioPinDigitalOutput motor2B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.HIGH);
-        final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.HIGH);
+        final GpioPinDigitalOutput motor2A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_00, "MyLED", PinState.LOW);
+        final GpioPinDigitalOutput motor2B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.LOW);
+        final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.LOW);
+
+        System.out.println("--> GPIO state should be: ON");
+
+        motor1A.high();
+        motor1B.low();
+        motor1E.high();
+
+        motor2A.high();
+        motor2B.low();
+        motor2E.high();
 
         motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
         motor1B.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
@@ -41,16 +51,6 @@ public class Forwards {
 
         // set shutdown state for this pin
 
-        System.out.println("--> GPIO state should be: ON");
-
-        motor1A.high();
-        motor1B.low();
-        motor1E.high();
-
-        motor2A.high();
-        motor2B.low();
-        motor2E.high();
-
 
         System.out.println("before thread");
         Thread.sleep(5000);
@@ -59,7 +59,7 @@ public class Forwards {
         System.out.println("before second shutdown options");
         //shut down the pins for reuse
         System.out.println("before loop");
-        for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
+        //for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
         System.out.println("has the gpio shutdown correctly?");
         System.out.println(gpio.isShutdown());
         System.out.println("shutting down");
