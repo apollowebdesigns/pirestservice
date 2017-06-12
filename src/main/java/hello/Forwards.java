@@ -58,14 +58,13 @@ public class Forwards {
         System.out.println(Thread.activeCount());
         System.out.println("before second shutdown options");
         //shut down the pins for reuse
-        System.out.println("before loop");
-        //for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
         System.out.println("has the gpio shutdown correctly?");
         System.out.println(gpio.isShutdown());
         System.out.println("shutting down");
         gpio.shutdown();
         System.out.println("post shutdown");
-        gpio.unprovisionPin();
+        System.out.println(gpio.isShutdown());
+        for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
         System.out.println("should be off now!");
     }
 }
