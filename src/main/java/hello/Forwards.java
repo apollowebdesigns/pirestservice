@@ -27,6 +27,10 @@ public class Forwards {
 
         System.out.println("--> GPIO state should be: ON");
 
+        if (gpio.isShutdown()) {
+            gpio.shutdown();
+        }
+
         motor1A.high();
         motor1B.low();
         motor1E.high();
