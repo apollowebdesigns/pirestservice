@@ -9,6 +9,9 @@ import java.util.List;
  * Created by andrewevans on 06/06/2017.
  */
 public class Forwards {
+    protected void finalize() {
+        System.out.println("last cleanup!");
+    }
     public void moveForwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
@@ -66,5 +69,6 @@ public class Forwards {
         System.out.println(gpio.isShutdown());
         for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
         System.out.println("should be off now!");
+        System.gc();
     }
 }
