@@ -1,6 +1,7 @@
 package hello;
 
 import com.pi4j.io.gpio.*;
+import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Forwards {
     public void moveForwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
-        final GpioController gpio = GpioFactory.getInstance();
+        final GpioController gpio = new GpioControllerImpl();
 
         final GpioPinDigitalOutput motor1A = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04, "MyLED", PinState.LOW);
         final GpioPinDigitalOutput motor1B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05, "MyLED", PinState.LOW);
@@ -26,10 +27,6 @@ public class Forwards {
         final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.LOW);
 
         System.out.println("--> GPIO state should be: ON");
-
-        if (gpio.isShutdown()) {
-            gpio.shutdown();
-        }
 
         motor1A.high();
         motor1B.low();
