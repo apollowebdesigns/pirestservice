@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by andrewevans on 06/06/2017.
+ * Created by andrewevans on 12/06/2017.
  */
-public class Forwards {
+public class Backwards {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
-    public void moveForwards() throws InterruptedException {
+    public void moveBackwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         //must not be static!!!!
@@ -29,12 +29,12 @@ public class Forwards {
 
         System.out.println("--> GPIO state should be: ON");
 
-        motor1A.high();
-        motor1B.low();
+        motor1A.low();
+        motor1B.high();
         motor1E.high();
 
-        motor2A.high();
-        motor2B.low();
+        motor2A.low();
+        motor2B.high();
         motor2E.high();
 
         motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
