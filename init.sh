@@ -1,3 +1,5 @@
+#!/bin/sh
+# init.sh
 cd ~
 cd Documents/
 cd springpi/
