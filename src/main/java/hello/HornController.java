@@ -15,7 +15,7 @@ public class HornController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/hits/motor")
+    @RequestMapping("/hits/blue")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         Horn horn = new Horn();
         horn.soundHorn();
