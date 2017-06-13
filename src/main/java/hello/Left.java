@@ -58,7 +58,7 @@ public class Left {
 
 
         System.out.println("before thread");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         System.out.println("after thread");
         System.out.println(Thread.activeCount());
         System.out.println("before second shutdown options");
