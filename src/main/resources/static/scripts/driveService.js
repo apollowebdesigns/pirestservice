@@ -14,6 +14,8 @@ function driveService ($http, $log) {
 
     this.requestedData = "";
 
+    var rewindRequests = [];
+
     var uniqueIP = "192.168.1.69";
     var uniqueIPparents = "192.168.1.74";
     var redSdCardIp = "192.168.1.73";
@@ -30,6 +32,7 @@ function driveService ($http, $log) {
 
     function _driveForwards() {
         $log.info('fowards function entered');
+        rewindRequests.push("/hits/backwards");
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
@@ -40,6 +43,7 @@ function driveService ($http, $log) {
 
     function _driveBackwards() {
         $log.info('backwards function entered');
+        rewindRequests.push("/hits/forwards");
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
@@ -50,6 +54,7 @@ function driveService ($http, $log) {
 
     function _driveRight() {
         $log.info('right function entered');
+        rewindRequests.push("/hits/left");
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
@@ -60,6 +65,7 @@ function driveService ($http, $log) {
 
     function _driveLeft() {
         $log.info('left function entered');
+        rewindRequests.push("/hits/right");
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
@@ -69,6 +75,16 @@ function driveService ($http, $log) {
     }
 
     function _rewind() {
-        _driveLeft().then(_driveRight);
+        //_driveLeft().then(_driveRight);
+        $log.info('left function entered');
+        return $http.get("/hits/rewind")
+            .then(function(response) {
+                $log.info('lets rewind');
+                for (var i = rewindRequests.length - 1; i >= 0; i--) {
+                    $http.get(rewindRequests[i]);
+                }
+                this.requestedData = "";
+                this.requestedData = response.data;
+            });
     }
 }
