@@ -80,9 +80,14 @@ function driveService ($http, $log) {
         return $http.get("/hits/rewind")
             .then(function(response) {
                 $log.info('lets rewind');
-                for (var i = rewindRequests.length - 1; i >= 0; i--) {
-                    $http.get(rewindRequests[i]);
+                var tempRequests = [];
+                for (var request in rewindRequests) {
+                    tempRequests.push(rewindRequests[request]);
                 }
+                for (var i = tempRequests.length - 1; i >= 0; i--) {
+                    $http.get(tempRequests[i]);
+                }
+                while (rewindRequests.length > 0) rewindRequests.pop();
                 this.requestedData = "";
                 this.requestedData = response.data;
             });
