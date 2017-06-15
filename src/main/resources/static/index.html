@@ -73,8 +73,12 @@
                 </div>
                 <h4>Which way is the pi going?</h4>
                 <div ng-bind="appCtrl.requestedData"></div>
-                <button class="btn blue-grey-text btn-large" ng-click="appCtrl.killPi()">Exit</button>
-                <button class="btn-floating btn-large waves-effect waves-light purple" ng-click="appCtrl.rewind()"><i class="large material-icons">replay</i></button>
+                <div>
+                    <button class="btn blue-grey-text btn-large" ng-click="appCtrl.killPi()">Exit</button>
+                </div>
+                <div>
+                    <button class="btn-floating btn-large waves-effect waves-light purple" ng-click="appCtrl.rewind()"><i class="large material-icons">replay</i></button>
+                </div>
             </div>
         </div>
 
