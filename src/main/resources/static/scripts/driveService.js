@@ -69,7 +69,6 @@ function driveService ($http, $log) {
     }
 
     function _rewind() {
-        _driveLeft();
-        _driveRight();
+        _driveLeft().then(_driveRight());
     }
 }
