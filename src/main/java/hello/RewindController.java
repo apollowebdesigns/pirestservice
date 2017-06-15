@@ -16,7 +16,8 @@ public class RewindController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/hits/rewind")
-    public String response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        return "done";
+    public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
+        return new Response(counter.incrementAndGet(),
+                String.format(template, name));
     }
 }
