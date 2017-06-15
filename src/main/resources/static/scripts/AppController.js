@@ -16,4 +16,5 @@ function AppController(ledService, driveService, exitService) {
     vm.driveData = driveService.driveData;
     vm.requestedData = driveService.requestedData;
     vm.killPi = exitService.killPi;
+    vm.rewind = driveService.rewind;
 }

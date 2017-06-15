@@ -10,6 +10,7 @@ function driveService ($http, $log) {
     this.driveBackwards = _driveBackwards;
     this.driveRight = _driveRight;
     this.driveLeft = _driveLeft;
+    this.rewind = _rewind;
 
     this.requestedData = "";
 
@@ -65,5 +66,10 @@ function driveService ($http, $log) {
             this.requestedData = "";
             this.requestedData = response.data;
         });
+    }
+
+    function _rewind() {
+        _driveLeft();
+        _driveRight();
     }
 }
