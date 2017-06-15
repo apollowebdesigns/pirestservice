@@ -10,7 +10,7 @@ function exitService ($http, $log) {
 
     function _killPi() {
         $log.info('killing the pi');
-        $http.get("/hits/kill")
+        return $http.get("/hits/kill")
             .then(function() {
                 $log.info('server stopped');
             });

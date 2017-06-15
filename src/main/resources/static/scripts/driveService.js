@@ -20,7 +20,7 @@ function driveService ($http, $log) {
 
     function _driveData() {
         $log.info('driving function entered function entered');
-        $http.get("/hits/motor")
+        return $http.get("/hits/motor")
         .then(function(response) {
             $log.info('data received');
             this.requestedData = "";
@@ -30,7 +30,7 @@ function driveService ($http, $log) {
 
     function _driveForwards() {
         $log.info('fowards function entered');
-        $http.get("/hits/forwards")
+        return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
             this.requestedData = "";
@@ -40,7 +40,7 @@ function driveService ($http, $log) {
 
     function _driveBackwards() {
         $log.info('backwards function entered');
-        $http.get("/hits/backwards")
+        return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
             this.requestedData = "";
@@ -50,7 +50,7 @@ function driveService ($http, $log) {
 
     function _driveRight() {
         $log.info('right function entered');
-        $http.get("/hits/right")
+        return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
             this.requestedData = "";
@@ -60,7 +60,7 @@ function driveService ($http, $log) {
 
     function _driveLeft() {
         $log.info('left function entered');
-        $http.get("/hits/left")
+        return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
             this.requestedData = "";
