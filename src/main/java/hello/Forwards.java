@@ -2,6 +2,7 @@ package hello;
 
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
+import hello.rewind.ActionController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +11,14 @@ import java.util.List;
  * Created by andrewevans on 06/06/2017.
  */
 public class Forwards {
+
     protected void finalize() {
         System.out.println("last cleanup!");
     }
     public void moveForwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
-
+        System.out.println("what was found in the repo?");
+        System.out.println(new ActionController().repository.findAll());
         //must not be static!!!!
         final GpioController gpio = new GpioControllerImpl();
 

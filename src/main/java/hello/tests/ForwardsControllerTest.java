@@ -1,4 +1,4 @@
-package hello;
+package hello.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ public class ForwardsControllerTest {
 
     @Test
     public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/greeting").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/hits/forwards").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"id\":1,\"content\":\"Hello, World!\"}")));
     }
