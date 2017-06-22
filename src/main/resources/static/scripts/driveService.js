@@ -77,7 +77,6 @@ function driveService ($http, $log) {
 
 
     function _rewind() {
-        //_driveLeft().then(_driveRight);
         $log.info('left function entered');
         return $http.get("/hits/rewind")
             .then(function(response) {
