@@ -15,9 +15,6 @@ public class Forwards {
         System.out.println("last cleanup!");
     }
     public void moveForwards() throws InterruptedException {
-//        System.out.println("<--Pi4J--> GPIO Control Example ... started.");
-//        System.out.println("what was found in the repo?");
-//        System.out.println(new ActionController().repository.findAll());
         //must not be static!!!!
         final GpioController gpio = new GpioControllerImpl();
 
