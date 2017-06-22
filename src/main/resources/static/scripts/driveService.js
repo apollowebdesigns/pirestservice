@@ -74,6 +74,8 @@ function driveService ($http, $log) {
         });
     }
 
+
+
     function _rewind() {
         //_driveLeft().then(_driveRight);
         $log.info('left function entered');
@@ -84,8 +86,13 @@ function driveService ($http, $log) {
                 for (var request in rewindRequests) {
                     tempRequests.push(rewindRequests[request]);
                 }
+                function getRewind(i) {
+                    return $http.get(tempRequests[i]).then(function (response) {
+                        $log.debug(response);
+                    });
+                }
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
-                    $http.get(tempRequests[i]);
+                    getRewind(tempRequests[i]);
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
                 this.requestedData = "";
