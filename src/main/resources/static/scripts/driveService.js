@@ -102,13 +102,22 @@ function driveService ($http, $log) {
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
                     //getRewind(tempRequests[i]);
                     //_driveForwards();
-                    (function () {
-                        return requestTable[tempRequests[i]];
-                    })()
+                    switch(tempRequests[i]) {
+                        case "/hits/backwards":
+                            _driveBackwards();
+                            break;
+                        case "/hits/forwards":
+                            _driveForwards();
+                            break;
+                        case "/hits/left":
+                            _driveLeft();
+                            break;
+                        case "/hits/right":
+                            _driveRight();
+                            break;
+                    }
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
-                this.requestedData = "";
-                this.requestedData = response.data;
             });
     }
 }
