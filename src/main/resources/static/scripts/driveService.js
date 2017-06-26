@@ -80,6 +80,15 @@ function driveService ($http, $log) {
         $log.info('left function entered');
         return $http.get("/hits/rewind")
             .then(function(response) {
+                //create local rewind object
+
+                var requestTable = {
+                    "/hits/backwards" : _driveBackwards(),
+                    "/hits/forwards" : _driveForwards(),
+                    "/hits/left" : _driveLeft(),
+                    "/hits/right" : _driveRight()
+                };
+
                 $log.info('lets rewind');
                 var tempRequests = [];
                 for (var request in rewindRequests) {
@@ -92,7 +101,10 @@ function driveService ($http, $log) {
                 }
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
                     //getRewind(tempRequests[i]);
-                    _driveForwards();
+                    //_driveForwards();
+                    (function () {
+                        return requestTable[tempRequests[i]];
+                    })()
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
                 this.requestedData = "";
