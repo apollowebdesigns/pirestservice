@@ -118,6 +118,8 @@ function driveService ($http, $log) {
                     }
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
+                rewindRequests.length = 0;
+                rewindRequests = [];
             });
     }
 }
