@@ -32,10 +32,10 @@ function driveService ($http, $log) {
 
     function _driveForwards() {
         $log.info('fowards function entered');
-        rewindRequests.push("/hits/backwards");
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
+            rewindRequests.push("/hits/backwards");
             this.requestedData = "";
             this.requestedData.concat(response.data);
         });
@@ -43,10 +43,10 @@ function driveService ($http, $log) {
 
     function _driveBackwards() {
         $log.info('backwards function entered');
-        rewindRequests.push("/hits/forwards");
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
+            rewindRequests.push("/hits/forwards");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -54,10 +54,10 @@ function driveService ($http, $log) {
 
     function _driveRight() {
         $log.info('right function entered');
-        rewindRequests.push("/hits/left");
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
+            rewindRequests.push("/hits/left");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -65,10 +65,10 @@ function driveService ($http, $log) {
 
     function _driveLeft() {
         $log.info('left function entered');
-        rewindRequests.push("/hits/right");
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
+            rewindRequests.push("/hits/right");
             this.requestedData = "";
             this.requestedData = response.data;
         });
