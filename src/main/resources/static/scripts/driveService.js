@@ -91,7 +91,8 @@ function driveService ($http, $log) {
                     });
                 }
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
-                    getRewind(tempRequests[i]);
+                    //getRewind(tempRequests[i]);
+                    _driveForwards();
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
                 this.requestedData = "";
