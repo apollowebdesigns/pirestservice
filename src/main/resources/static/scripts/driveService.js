@@ -30,45 +30,53 @@ function driveService ($http, $log) {
         });
     }
 
-    function _driveForwards() {
+    function _driveForwards(input) {
         $log.info('fowards function entered');
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
-            rewindRequests.push("/hits/backwards");
+            if (input === undefined || input.length === 0) {
+                rewindRequests.push("/hits/backwards");
+            }
             this.requestedData = "";
             this.requestedData.concat(response.data);
         });
     }
 
-    function _driveBackwards() {
+    function _driveBackwards(input) {
         $log.info('backwards function entered');
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
-            rewindRequests.push("/hits/forwards");
+            if (input === undefined || input.length === 0) {
+                rewindRequests.push("/hits/forwards");
+            }
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveRight() {
+    function _driveRight(input) {
         $log.info('right function entered');
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
-            rewindRequests.push("/hits/left");
+            if (input === undefined || input.length === 0) {
+                rewindRequests.push("/hits/left");
+            }
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveLeft() {
+    function _driveLeft(input) {
         $log.info('left function entered');
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
-            rewindRequests.push("/hits/right");
+            if (input === undefined || input.length === 0) {
+                rewindRequests.push("/hits/right");
+            }
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -77,16 +85,16 @@ function driveService ($http, $log) {
     function getRewind(input) {
         switch(input) {
             case "/hits/backwards":
-                return _driveBackwards();
+                return _driveBackwards(input);
                 break;
             case "/hits/forwards":
-                return _driveForwards();
+                return _driveForwards(input);
                 break;
             case "/hits/left":
-                return _driveLeft();
+                return _driveLeft(input);
                 break;
             case "/hits/right":
-                return _driveRight();
+                return _driveRight(input);
                 break;
         }
     }
