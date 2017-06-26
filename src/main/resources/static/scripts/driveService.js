@@ -74,7 +74,22 @@ function driveService ($http, $log) {
         });
     }
 
-
+    function getRewind(input) {
+        switch(input) {
+            case "/hits/backwards":
+                return _driveBackwards();
+                break;
+            case "/hits/forwards":
+                return _driveForwards();
+                break;
+            case "/hits/left":
+                return _driveLeft();
+                break;
+            case "/hits/right":
+                return _driveRight();
+                break;
+        }
+    }
 
     function _rewind() {
         $log.info('left function entered');
@@ -94,28 +109,11 @@ function driveService ($http, $log) {
                 for (var request in rewindRequests) {
                     tempRequests.push(rewindRequests[request]);
                 }
-                function getRewind(i) {
-                    return $http.get(tempRequests[i]).then(function (response) {
-                        $log.debug(response);
-                    });
-                }
+
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
                     //getRewind(tempRequests[i]);
                     //_driveForwards();
-                    switch(tempRequests[i]) {
-                        case "/hits/backwards":
-                            _driveBackwards();
-                            break;
-                        case "/hits/forwards":
-                            _driveForwards();
-                            break;
-                        case "/hits/left":
-                            _driveLeft();
-                            break;
-                        case "/hits/right":
-                            _driveRight();
-                            break;
-                    }
+                    getRewind(tempRequests[i])
                 }
                 while (rewindRequests.length > 0) rewindRequests.pop();
                 rewindRequests.length = 0;
