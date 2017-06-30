@@ -36,8 +36,8 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('fowards hit');
             if (input === undefined || input.length === 0) {
+                if (localStorage.rewindRequests.length === 0) temp = [];
                 var temp = JSON.parse(localStorage.rewindRequests);
-                if (temp.length === 0) temp = [];
                 temp.push("/hits/backwards");
                 localStorage.rewindRequests = JSON.stringify(temp);
             }
@@ -52,8 +52,8 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('backwards hit');
             if (input === undefined || input.length === 0) {
+                if (localStorage.rewindRequests.length === 0) temp = [];
                 var temp = JSON.parse(localStorage.rewindRequests);
-                if (temp.length === 0) temp = [];
                 temp.push("/hits/forwards");
                 localStorage.rewindRequests = JSON.stringify(temp);
             }
@@ -68,8 +68,8 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('right hit');
             if (input === undefined || input.length === 0) {
+                if (localStorage.rewindRequests.length === 0) temp = [];
                 var temp = JSON.parse(localStorage.rewindRequests);
-                if (temp.length === 0) temp = [];
                 temp.push("/hits/left");
                 localStorage.rewindRequests = JSON.stringify(temp);
             }
@@ -84,8 +84,8 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('left hit');
             if (input === undefined || input.length === 0) {
+                if (localStorage.rewindRequests.length === 0) temp = [];
                 var temp = JSON.parse(localStorage.rewindRequests);
-                if (temp.length === 0) temp = [];
                 temp.push("/hits/right");
                 localStorage.rewindRequests = JSON.stringify(temp);
             }
