@@ -14,7 +14,7 @@ function driveService ($http, $log) {
 
     this.requestedData = "";
 
-    var rewindRequests = [];
+    localStorage.rewindRequests = [];
 
     var uniqueIP = "192.168.1.69";
     var uniqueIPparents = "192.168.1.74";
@@ -36,7 +36,7 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('fowards hit');
             if (input === undefined || input.length === 0) {
-                rewindRequests.push("/hits/backwards");
+                localStorage.rewindRequests.push("/hits/backwards");
             }
             this.requestedData = "";
             this.requestedData.concat(response.data);
@@ -49,7 +49,7 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('backwards hit');
             if (input === undefined || input.length === 0) {
-                rewindRequests.push("/hits/forwards");
+                localStorage.rewindRequests.push("/hits/forwards");
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -62,7 +62,7 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('right hit');
             if (input === undefined || input.length === 0) {
-                rewindRequests.push("/hits/left");
+                localStorage.rewindRequests.push("/hits/left");
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -75,7 +75,7 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('left hit');
             if (input === undefined || input.length === 0) {
-                rewindRequests.push("/hits/right");
+                localStorage.rewindRequests.push("/hits/right");
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -114,18 +114,22 @@ function driveService ($http, $log) {
 
                 $log.info('lets rewind');
                 var tempRequests = [];
-                for (var request in rewindRequests) {
-                    tempRequests.push(rewindRequests[request]);
+                for (var i = 0; i < localStorage.rewindRequests.length; i++) {
+                    tempRequests.push(localStorage.rewindRequests[i]);
                 }
-
+                $log.info("temp requests are");
+                $log.debug(tempRequests);
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
                     //getRewind(tempRequests[i]);
                     //_driveForwards();
                     getRewind(tempRequests[i])
                 }
-                while (rewindRequests.length > 0) rewindRequests.pop();
-                rewindRequests.length = 0;
-                rewindRequests = [];
+
+                //cleaning out localstorage
+                while (localStorage.rewindRequests.length > 0) localStorage.rewindRequests.pop();
+                localStorage.rewindRequests.length = 0;
+                localStorage.rewindRequests = [];
+                localStorage.removeItem("rewindRequests");
             });
     }
 }
