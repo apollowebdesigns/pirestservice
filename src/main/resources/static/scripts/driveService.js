@@ -36,7 +36,10 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('fowards hit');
             if (input === undefined || input.length === 0) {
-                localStorage.rewindRequests.push("/hits/backwards");
+                var temp = JSON.parse(localStorage.rewindRequests);
+                if (temp.length === 0) temp = [];
+                temp.push("/hits/backwards");
+                localStorage.rewindRequests = JSON.stringify(temp);
             }
             this.requestedData = "";
             this.requestedData.concat(response.data);
@@ -49,7 +52,10 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('backwards hit');
             if (input === undefined || input.length === 0) {
-                localStorage.rewindRequests.push("/hits/forwards");
+                var temp = JSON.parse(localStorage.rewindRequests);
+                if (temp.length === 0) temp = [];
+                temp.push("/hits/forwards");
+                localStorage.rewindRequests = JSON.stringify(temp);
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -62,7 +68,10 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('right hit');
             if (input === undefined || input.length === 0) {
-                localStorage.rewindRequests.push("/hits/left");
+                var temp = JSON.parse(localStorage.rewindRequests);
+                if (temp.length === 0) temp = [];
+                temp.push("/hits/left");
+                localStorage.rewindRequests = JSON.stringify(temp);
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -75,7 +84,10 @@ function driveService ($http, $log) {
         .then(function(response) {
             $log.info('left hit');
             if (input === undefined || input.length === 0) {
-                localStorage.rewindRequests.push("/hits/right");
+                var temp = JSON.parse(localStorage.rewindRequests);
+                if (temp.length === 0) temp = [];
+                temp.push("/hits/right");
+                localStorage.rewindRequests = JSON.stringify(temp);
             }
             this.requestedData = "";
             this.requestedData = response.data;
@@ -113,9 +125,10 @@ function driveService ($http, $log) {
                 };
 
                 $log.info('lets rewind');
+                var rewindRequests = JSON.parse(localStorage.rewindRequests);
                 var tempRequests = [];
-                for (var i = 0; i < localStorage.rewindRequests.length; i++) {
-                    tempRequests.push(localStorage.rewindRequests[i]);
+                for (var i = 0; i < rewindRequests.length; i++) {
+                    tempRequests.push(rewindRequests[i]);
                 }
                 $log.info("temp requests are");
                 $log.debug(tempRequests);
@@ -126,9 +139,7 @@ function driveService ($http, $log) {
                 }
 
                 //cleaning out localstorage
-                while (localStorage.rewindRequests.length > 0) localStorage.rewindRequests.pop();
-                localStorage.rewindRequests.length = 0;
-                localStorage.rewindRequests = [];
+                while (rewindRequests.length > 0) rewindRequests.pop();
                 localStorage.removeItem("rewindRequests");
             });
     }
