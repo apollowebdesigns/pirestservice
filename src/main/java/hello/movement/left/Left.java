@@ -1,4 +1,4 @@
-package hello;
+package hello.movement.left;
 
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
@@ -9,11 +9,11 @@ import java.util.List;
 /**
  * Created by andrewevans on 12/06/2017.
  */
-public class Right {
+public class Left {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
-    public void moveRight() throws InterruptedException {
+    public void moveLeft() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         //must not be static!!!!
@@ -29,12 +29,12 @@ public class Right {
 
         System.out.println("--> GPIO state should be: ON");
 
-        motor1A.low();
-        motor1B.high();
+        motor1A.high();
+        motor1B.low();
         motor1E.high();
 
-        motor2A.high();
-        motor2B.low();
+        motor2A.low();
+        motor2B.high();
         motor2E.high();
 
         motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
