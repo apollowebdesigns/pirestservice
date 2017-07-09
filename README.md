@@ -4,6 +4,11 @@ Start a script on load
 
 http://www.instructables.com/id/Raspberry-Pi-Launch-Python-script-on-startup/
 
+Install PHP
+
+<code>sudo apt-get update</code>
+<code>sudo apt-get install apache2 php5</code>
+
 Raspberry Pi Camera
 
 http://elinux.org/RPi-Cam-Web-Interface#Basic_Installation
