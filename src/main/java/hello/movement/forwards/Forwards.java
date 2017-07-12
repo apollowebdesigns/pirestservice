@@ -1,7 +1,8 @@
-package hello;
+package hello.movement.forwards;
 
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
+import hello.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
