@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +27,11 @@ public class Forwards {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
-    public void moveForwards() throws InterruptedException {
+    public void moveForwards() throws InterruptedException, FileNotFoundException, IOException {
+        FileOutputStream fileOut =
+        new FileOutputStream("/temp/employee.ser");
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
         //String commands
         System.out.println("testing spring ioc");
         System.out.println(database);
