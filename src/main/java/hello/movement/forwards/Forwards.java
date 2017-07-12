@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -27,7 +26,7 @@ public class Forwards {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
-    public void moveForwards() throws InterruptedException, FileNotFoundException, IOException {
+    public void moveForwards() throws InterruptedException {
 
         /**
          * file write out test
