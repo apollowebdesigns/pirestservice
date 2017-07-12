@@ -28,9 +28,22 @@ public class Forwards {
         System.out.println("last cleanup!");
     }
     public void moveForwards() throws InterruptedException, FileNotFoundException, IOException {
-        FileOutputStream fileOut =
-        new FileOutputStream("/temp/employee.ser");
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+        /**
+         * file write out test
+         */
+        String serial = "test";
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream("/tmp/employee.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(serial);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /tmp/employee.ser");
+        }catch(IOException i) {
+            i.printStackTrace();
+        }
 
         //String commands
         System.out.println("testing spring ioc");
