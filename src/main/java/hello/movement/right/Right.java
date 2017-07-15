@@ -13,6 +13,11 @@ public class Right {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
+
+    /**
+     * Moves Raspberry Pi right
+     * @throws InterruptedException
+     */
     public void moveRight() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 

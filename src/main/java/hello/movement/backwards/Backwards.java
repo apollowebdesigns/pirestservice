@@ -13,6 +13,11 @@ public class Backwards {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
+
+    /**
+     * Moves Raspberry Pi backwards
+     * @throws InterruptedException
+     */
     public void moveBackwards() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 

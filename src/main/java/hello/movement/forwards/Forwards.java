@@ -26,6 +26,11 @@ public class Forwards {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
+
+    /**
+     * Moves Raspberry Pi forwards
+     * @throws InterruptedException
+     */
     public void moveForwards() throws InterruptedException {
 
         /**
