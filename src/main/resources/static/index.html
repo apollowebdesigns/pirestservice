@@ -85,11 +85,11 @@
     </div>
 </div>
 
-<div class="parallax-container valign-wrapper">
+<div ng-controller="DebugController as debugCtrl" class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
         <div class="container">
             <div class="row center">
-                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                <h5 class="header col s12 light">Debug mode : --> {{debugCtrl.rewindRequests}} </h5>
             </div>
         </div>
     </div>
@@ -146,6 +146,7 @@
 <script src= "scripts/app.js"></script>
 <script src= "scripts/MapController.js"></script>
 <script src= "scripts/AppController.js"></script>
+<script src= "scripts/DebugController.js"></script>
 <script src= "scripts/rewindFactory.js"></script>
 <script src= "scripts/ledService.js"></script>
 <script src= "scripts/driveService.js"></script>
