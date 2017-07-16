@@ -2,13 +2,13 @@ angular
     .module('app')
     .factory('rewindFactory', rewindFactory);
 
-driveService.$inject = ['$log'];
+driveService.$inject = [];
 
 /**
  * Model for rewinding Raspberry Pi
  * @param $log
  */
-function rewindFactory ($log) {
+function rewindFactory () {
     var rewindRequests = [];
 
     var rewindFactoryObj = {
