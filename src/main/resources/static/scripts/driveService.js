@@ -105,7 +105,7 @@ function driveService ($http, $log, rewindFactory) {
                 $log.info('lets rewind');
                 var tempRequests = rewindFactory.rewindRequests;
                 $log.info("temp requests are");
-                console.table(tempRequests);
+                $log.debug(tempRequests);
                 //logging placed in for now
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
                     $log.info(tempRequests[i])
