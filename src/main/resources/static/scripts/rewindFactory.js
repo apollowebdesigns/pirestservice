@@ -8,12 +8,12 @@ driveService.$inject = ['$log'];
  * Model for rewinding Raspberry Pi
  * @param $log
  */
-function driveService ($log) {
+function rewindFactory ($log) {
     var rewindRequests = [];
 
-    var rewindFactory = {
+    var rewindFactoryObj = {
         rewindRequests: rewindRequests
     };
 
-    return rewindFactory;
+    return rewindFactoryObj;
 }
