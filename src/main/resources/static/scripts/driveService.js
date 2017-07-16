@@ -35,7 +35,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
-            rewindFactory.push("/hits/backwards");
+            rewindFactory.rewindRequests.push("/hits/backwards");
             this.requestedData = "";
             this.requestedData.concat(response.data);
         });
@@ -46,7 +46,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
-            rewindFactory.push("/hits/forwards");
+            rewindFactory.rewindRequests.push("/hits/forwards");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -57,7 +57,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
-            rewindFactory.push("/hits/left");
+            rewindFactory.rewindRequests.push("/hits/left");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -68,7 +68,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
-            rewindFactory.push("/hits/right");
+            rewindFactory.rewindRequests.push("/hits/right");
             this.requestedData = "";
             this.requestedData = response.data;
         });
