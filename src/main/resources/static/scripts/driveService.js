@@ -64,7 +64,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
-            if (flag === undefined || flag.length === 0) ewindFactory.rewindRequests.push("/hits/left");
+            if (flag === undefined || flag.length === 0) rewindFactory.rewindRequests.push("/hits/left");
             this.requestedData = "";
             this.requestedData = response.data;
         });
