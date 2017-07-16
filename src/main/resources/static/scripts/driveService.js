@@ -103,13 +103,17 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/rewind")
             .then(function() {
                 $log.info('lets rewind');
-                var tempRequests = rewindFactory.rewindRequests;
+                var tempRequests = [];
+                //copies current requests into temp storage
+                for (var i = 0; i < rewindFactory.rewindRequests.length; i++)
+                    tempRequests.push(rewindFactory.rewindRequests[i]);
                 $log.info("temp requests are");
                 $log.debug(tempRequests);
                 //logging placed in for now
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
-                    $log.info(tempRequests[i])
+                    getRewind(tempRequests[i])
                 }
+                //cleans out factory when finished to remove all old requests
                 while (rewindFactory.rewindRequests.length > 0) {
                     rewindFactory.rewindRequests.pop();
                 }
