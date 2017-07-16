@@ -36,46 +36,46 @@ function driveService ($http, $log, rewindFactory) {
         });
     }
 
-    function _driveForwards() {
+    function _driveForwards(flag) {
         console.dir("test?");
         $log.info('forwards function entered');
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('forwards hit');
-            rewindFactory.rewindRequests.push("/hits/backwards");
+            if (flag === undefined || flag.length === 0) rewindFactory.rewindRequests.push("/hits/backwards");
             this.requestedData = "";
             this.requestedData.concat(response.data);
         });
     }
 
-    function _driveBackwards() {
+    function _driveBackwards(flag) {
         $log.info('backwards function entered');
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
-            rewindFactory.rewindRequests.push("/hits/forwards");
+            if (flag === undefined || flag.length === 0) rewindFactory.rewindRequests.push("/hits/forwards");
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveRight() {
+    function _driveRight(flag) {
         $log.info('right function entered');
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
-            rewindFactory.rewindRequests.push("/hits/left");
+            if (flag === undefined || flag.length === 0) ewindFactory.rewindRequests.push("/hits/left");
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveLeft() {
+    function _driveLeft(flag) {
         $log.info('left function entered');
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
-            rewindFactory.rewindRequests.push("/hits/right");
+            if (flag === undefined || flag.length === 0) rewindFactory.rewindRequests.push("/hits/right");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -84,16 +84,16 @@ function driveService ($http, $log, rewindFactory) {
     function getRewind(input) {
         switch(input) {
             case "/hits/backwards":
-                return _driveBackwards();
+                return _driveBackwards("flagged");
                 break;
             case "/hits/forwards":
-                return _driveForwards();
+                return _driveForwards("flagged");
                 break;
             case "/hits/left":
-                return _driveLeft();
+                return _driveLeft("flagged");
                 break;
             case "/hits/right":
-                return _driveRight();
+                return _driveRight("flagged");
                 break;
         }
     }
