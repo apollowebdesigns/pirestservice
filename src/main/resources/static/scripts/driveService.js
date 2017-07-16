@@ -2,9 +2,9 @@ angular
     .module('app')
     .service('driveService', driveService);
 
-driveService.$inject = ['$http', '$log'];
+driveService.$inject = ['$http', '$log', 'rewindFactory'];
 
-function driveService ($http, $log) { 
+function driveService ($http, $log, rewindFactory) {
     this.driveData = _driveData;
     this.driveForwards = _driveForwards;
     this.driveBackwards = _driveBackwards;
@@ -30,65 +30,45 @@ function driveService ($http, $log) {
         });
     }
 
-    function _driveForwards(input) {
+    function _driveForwards() {
         $log.info('fowards function entered');
         return $http.get("/hits/forwards")
         .then(function(response) {
             $log.info('fowards hit');
-            if (input === undefined || input.length === 0) {
-                if (localStorage.rewindRequests.length === 0) temp = [];
-                var temp = JSON.parse(localStorage.rewindRequests);
-                temp.push("/hits/backwards");
-                localStorage.rewindRequests = JSON.stringify(temp);
-            }
+            rewindFactory.push("/hits/backwards");
             this.requestedData = "";
             this.requestedData.concat(response.data);
         });
     }
 
-    function _driveBackwards(input) {
+    function _driveBackwards() {
         $log.info('backwards function entered');
         return $http.get("/hits/backwards")
         .then(function(response) {
             $log.info('backwards hit');
-            if (input === undefined || input.length === 0) {
-                if (localStorage.rewindRequests.length === 0) temp = [];
-                var temp = JSON.parse(localStorage.rewindRequests);
-                temp.push("/hits/forwards");
-                localStorage.rewindRequests = JSON.stringify(temp);
-            }
+            rewindFactory.push("/hits/forwards");
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveRight(input) {
+    function _driveRight() {
         $log.info('right function entered');
         return $http.get("/hits/right")
         .then(function(response) {
             $log.info('right hit');
-            if (input === undefined || input.length === 0) {
-                if (localStorage.rewindRequests.length === 0) temp = [];
-                var temp = JSON.parse(localStorage.rewindRequests);
-                temp.push("/hits/left");
-                localStorage.rewindRequests = JSON.stringify(temp);
-            }
+            rewindFactory.push("/hits/left");
             this.requestedData = "";
             this.requestedData = response.data;
         });
     }
 
-    function _driveLeft(input) {
+    function _driveLeft() {
         $log.info('left function entered');
         return $http.get("/hits/left")
         .then(function(response) {
             $log.info('left hit');
-            if (input === undefined || input.length === 0) {
-                if (localStorage.rewindRequests.length === 0) temp = [];
-                var temp = JSON.parse(localStorage.rewindRequests);
-                temp.push("/hits/right");
-                localStorage.rewindRequests = JSON.stringify(temp);
-            }
+            rewindFactory.push("/hits/right");
             this.requestedData = "";
             this.requestedData = response.data;
         });
@@ -114,33 +94,17 @@ function driveService ($http, $log) {
     function _rewind() {
         $log.info('left function entered');
         return $http.get("/hits/rewind")
-            .then(function(response) {
-                //create local rewind object
-
-                var requestTable = {
-                    "/hits/backwards" : _driveBackwards(),
-                    "/hits/forwards" : _driveForwards(),
-                    "/hits/left" : _driveLeft(),
-                    "/hits/right" : _driveRight()
-                };
-
+            .then(function() {
                 $log.info('lets rewind');
-                var rewindRequests = JSON.parse(localStorage.rewindRequests);
-                var tempRequests = [];
-                for (var i = 0; i < rewindRequests.length; i++) {
-                    tempRequests.push(rewindRequests[i]);
-                }
+                var tempRequests = rewindFactory.rewindRequests;
                 $log.info("temp requests are");
                 $log.debug(tempRequests);
                 for (var i = tempRequests.length - 1; i >= 0; i--) {
-                    //getRewind(tempRequests[i]);
-                    //_driveForwards();
                     getRewind(tempRequests[i])
                 }
-
-                //cleaning out localstorage
-                while (rewindRequests.length > 0) rewindRequests.pop();
-                localStorage.removeItem("rewindRequests");
+                while (rewindFactory.rewindRequests.length > 0) {
+                    rewindFactory.rewindRequests.pop();
+                }
             });
     }
 }
