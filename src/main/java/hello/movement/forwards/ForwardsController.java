@@ -1,6 +1,6 @@
 package hello.movement.forwards;
 
-import hello.Response;
+import hello.movement.response.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class ForwardsController {
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         Forwards forwards = new Forwards();
-        forwards.moveForwards();
+        forwards.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }

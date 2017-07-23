@@ -1,6 +1,6 @@
 package hello.interfaces;
 
-import hello.Response;
+import hello.movement.response.Response;
 
 /**
  * Created by andrewevans on 06/06/2017.

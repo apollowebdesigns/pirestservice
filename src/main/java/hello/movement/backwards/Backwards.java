@@ -2,6 +2,7 @@ package hello.movement.backwards;
 
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
+import hello.move.Movement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by andrewevans on 12/06/2017.
  */
-public class Backwards {
+public class Backwards implements Movement {
     protected void finalize() {
         System.out.println("last cleanup!");
     }
@@ -18,7 +19,7 @@ public class Backwards {
      * Moves Raspberry Pi backwards
      * @throws InterruptedException
      */
-    public void moveBackwards() throws InterruptedException {
+    public void move() throws InterruptedException {
         System.out.println("<--Pi4J--> GPIO Control Example ... started.");
 
         //must not be static!!!!

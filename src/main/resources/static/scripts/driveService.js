@@ -81,21 +81,29 @@ function driveService ($http, $log, rewindFactory) {
         });
     }
 
-    function getRewind(input) {
-        switch(input) {
-            case "/hits/backwards":
-                return _driveBackwards("flagged");
-                break;
-            case "/hits/forwards":
-                return _driveForwards("flagged");
-                break;
-            case "/hits/left":
-                return _driveLeft("flagged");
-                break;
-            case "/hits/right":
-                return _driveRight("flagged");
-                break;
+    function getRewind() {
+
+        if (rewindFactory.rewindRequests.length > 0) {
+            switch(rewindFactory.rewindRequests[rewindFactory.rewindRequests.length - 1]) {
+                case "/hits/backwards":
+                    return _driveBackwards("flagged");
+                    break;
+                case "/hits/forwards":
+                    return _driveForwards("flagged");
+                    break;
+                case "/hits/left":
+                    return _driveLeft("flagged");
+                    break;
+                case "/hits/right":
+                    return _driveRight("flagged");
+                    break;
+            }
+        }   else {
+            return;
         }
+        rewindFactory.rewindRequests.pop();
+        getRewind()
+
     }
 
     function _rewind() {
@@ -109,11 +117,7 @@ function driveService ($http, $log, rewindFactory) {
                     tempRequests.push(rewindFactory.rewindRequests[i]);
                 $log.info("temp requests are");
                 $log.debug(tempRequests);
-                //logging placed in for now
-                for (var i = tempRequests.length - 1; i >= 0; i--) {
-                    getRewind(tempRequests[i])
-                }
-                //cleans out factory when finished to remove all old requests
+                getRewind(tempRequests[tempRequests.length - 1]);
                 while (rewindFactory.rewindRequests.length > 0) {
                     rewindFactory.rewindRequests.pop();
                 }

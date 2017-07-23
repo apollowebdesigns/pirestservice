@@ -1,6 +1,6 @@
 package hello.movement.right;
 
-import hello.Response;
+import hello.movement.response.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class RightController {
     @RequestMapping("/hits/right")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         Right right = new Right();
-        right.moveRight();
+        right.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }

@@ -1,6 +1,7 @@
 package hello;
 
 import hello.interfaces.ControllerResponse;
+import hello.movement.response.Response;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

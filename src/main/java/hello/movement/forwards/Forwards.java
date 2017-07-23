@@ -3,6 +3,7 @@ package hello.movement.forwards;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 import hello.Application;
+import hello.move.Movement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Created by andrewevans on 06/06/2017.
  */
-public class Forwards {
+public class Forwards implements Movement {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
@@ -31,7 +32,7 @@ public class Forwards {
      * Moves Raspberry Pi forwards
      * @throws InterruptedException
      */
-    public void moveForwards() throws InterruptedException {
+    public void move() throws InterruptedException {
 
         /**
          * file write out test

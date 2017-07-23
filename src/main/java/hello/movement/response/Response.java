@@ -1,6 +1,6 @@
-package hello;
+package hello.movement.response;
 
-public class Response {
+public class Response implements MustRespond {
 
     private final long id;
     private final String content;
