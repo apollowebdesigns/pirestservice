@@ -3,6 +3,8 @@ package hello.movement.backwards;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 import hello.move.Movement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +13,10 @@ import java.util.List;
  * Created by andrewevans on 12/06/2017.
  */
 public class Backwards implements Movement {
+    Logger logger = LoggerFactory.getLogger(Backwards.class);
+    
     protected void finalize() {
-        System.out.println("last cleanup!");
+        logger.debug("last cleanup!");
     }
 
     /**
@@ -20,7 +24,8 @@ public class Backwards implements Movement {
      * @throws InterruptedException
      */
     public void move() throws InterruptedException {
-        System.out.println("<--Pi4J--> GPIO Control Example ... started.");
+
+        logger.info("<--Pi4J--> GPIO Control Example ... started.");
 
         //must not be static!!!!
         final GpioController gpio = new GpioControllerImpl();
@@ -33,7 +38,7 @@ public class Backwards implements Movement {
         final GpioPinDigitalOutput motor2B = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyLED", PinState.LOW);
         final GpioPinDigitalOutput motor2E = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.LOW);
 
-        System.out.println("--> GPIO state should be: ON");
+        logger.debug("--> GPIO state should be: ON");
 
         motor1A.low();
         motor1B.high();
@@ -63,20 +68,20 @@ public class Backwards implements Movement {
         // set shutdown state for this pin
 
 
-        System.out.println("before thread");
+        logger.debug("before thread");
         Thread.sleep(5000);
-        System.out.println("after thread");
+        logger.debug("after thread");
         System.out.println(Thread.activeCount());
-        System.out.println("before second shutdown options");
+        logger.debug("before second shutdown options");
         //shut down the pins for reuse
-        System.out.println("has the gpio shutdown correctly?");
+        logger.debug("has the gpio shutdown correctly?");
         System.out.println(gpio.isShutdown());
-        System.out.println("shutting down");
+        logger.debug("shutting down");
         gpio.shutdown();
-        System.out.println("post shutdown");
+        logger.debug("post shutdown");
         System.out.println(gpio.isShutdown());
         for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
-        System.out.println("should be off now!");
+        logger.debug("should be off now!");
         System.gc();
     }
 }
