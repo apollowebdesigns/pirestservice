@@ -33,7 +33,7 @@ public class Forwards implements Movement {
      * Moves Raspberry Pi forwards
      * @throws InterruptedException
      */
-    public void move() throws InterruptedException {
+    public synchronized void move() throws InterruptedException {
 
         /**
          * file write out test

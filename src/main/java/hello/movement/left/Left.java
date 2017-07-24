@@ -23,7 +23,7 @@ public class Left implements Movement {
      * Moves Raspberry Pi left
      * @throws InterruptedException
      */
-    public void move() throws InterruptedException {
+    public synchronized void move() throws InterruptedException {
         logger.debug("<--Pi4J--> GPIO Control Example ... started.");
 
         //must not be static!!!!

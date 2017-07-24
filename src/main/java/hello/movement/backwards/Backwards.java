@@ -23,7 +23,7 @@ public class Backwards implements Movement {
      * Moves Raspberry Pi backwards
      * @throws InterruptedException
      */
-    public void move() throws InterruptedException {
+    public synchronized void move() throws InterruptedException {
 
         logger.info("<--Pi4J--> GPIO Control Example ... started.");
 
