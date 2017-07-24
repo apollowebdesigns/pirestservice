@@ -3,6 +3,7 @@ package hello.movement.backwards;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 import hello.move.Movement;
+import hello.move.MovementImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by andrewevans on 12/06/2017.
  */
-public class Backwards implements Movement {
+public class Backwards extends MovementImpl implements Movement {
     Logger logger = LoggerFactory.getLogger(Backwards.class);
     
     protected void finalize() {

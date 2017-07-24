@@ -4,6 +4,7 @@ import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 import hello.Application;
 import hello.move.Movement;
+import hello.move.MovementImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.List;
 /**
  * Created by andrewevans on 06/06/2017.
  */
-public class Forwards implements Movement {
+public class Forwards extends MovementImpl implements Movement {
     Logger logger = LoggerFactory.getLogger(Forwards.class);
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
