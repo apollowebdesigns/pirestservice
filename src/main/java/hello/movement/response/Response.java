@@ -1,8 +1,13 @@
 package hello.movement.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Response implements MustRespond {
 
+    @JsonProperty
     private final long id;
+
+    @JsonProperty
     private final String content;
 
     public Response() {

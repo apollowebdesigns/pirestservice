@@ -28,7 +28,7 @@ public class RewindController {
             log.debug("direction");
             log.debug(request.get("direction").toString());
             String requested = "http://localhost" + request.get("direction");
-            restTemplate.getForObject(requested, Response.class);
+            restTemplate.getForObject(requested, Object.class);
         }
 
 
