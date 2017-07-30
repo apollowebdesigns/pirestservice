@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-//GPIO imports
-
-/**
- * Created by andrewevans on 04/06/2017.
- */
 @RestController
 public class ForwardsController {
 

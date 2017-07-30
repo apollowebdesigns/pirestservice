@@ -5,9 +5,11 @@ import com.pi4j.io.gpio.impl.GpioControllerImpl;
 import hello.Application;
 import hello.move.Movement;
 import hello.move.MovementImpl;
+import hello.rewind.Direction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,9 +17,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by andrewevans on 06/06/2017.
- */
 public class Forwards extends MovementImpl implements Movement {
     Logger logger = LoggerFactory.getLogger(Forwards.class);
 
@@ -111,6 +110,12 @@ public class Forwards extends MovementImpl implements Movement {
         System.out.println(gpio.isShutdown());
         for (GpioPinDigitalOutput pin : pins) gpio.unprovisionPin(pin);
         logger.debug("should be off now!");
+
+        //adding opposite direction to database
+        RestTemplate restTemplate = new RestTemplate();
+        List<Direction> previousRequests = restTemplate.getForObject("http://localhost:8080/rewind/add?time=now&dir=/hits/backwards", List.class);
+        logger.info(previousRequests.toString());
+
         System.gc();
     }
 }
