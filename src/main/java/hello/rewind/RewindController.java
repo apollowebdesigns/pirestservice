@@ -32,7 +32,7 @@ public class RewindController {
             restTemplate.getForObject(requested, Object.class);
         }
 
-
+        restTemplate.getForObject("http://localhost:8080/rewind/clear", Object.class);
         return previousRequests;
     }
 }
