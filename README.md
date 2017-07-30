@@ -1,3 +1,9 @@
+## Repositories needed
+
+### Pi Database MySQL
+
+https://github.com/apollowebdesigns/pirewinddatabase
+
 ## Starting the pi
 
 Start a script on load
