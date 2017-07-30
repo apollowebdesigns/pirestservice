@@ -1,10 +1,15 @@
 package hello;
 
 import hello.movement.response.Response;
+import hello.rewind.Direction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -12,12 +17,18 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @RestController
 public class RewindController {
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/hits/rewind")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
+
+        RestTemplate restTemplate = new RestTemplate();
+        List<Direction> quote = restTemplate.getForObject("http://localhost:8080/demo/all", List.class);
+        log.info(quote.toString());
+
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }
