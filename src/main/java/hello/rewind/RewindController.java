@@ -1,5 +1,6 @@
 package hello.rewind;
 
+import hello.movement.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ public class RewindController {
         for (LinkedHashMap request: previousRequests) {
             log.debug("direction");
             log.debug(request.get("direction").toString());
+            String requested = "http://localhost" + request.get("direction");
+            restTemplate.getForObject(requested, Response.class);
         }
 
 
