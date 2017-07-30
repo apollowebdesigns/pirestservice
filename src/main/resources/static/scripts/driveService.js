@@ -103,12 +103,7 @@ function driveService ($http, $log, rewindFactory) {
         return $http.get("/hits/rewind")
             .then(function(response) {
                 $log.info('lets rewind');
-                var tempRequests = response;
-                $log.info("temp requests are");
-                $log.debug(tempRequests);
-                for (var i = 0; i < tempRequests.length; i++) {
-                    getRewind(tempRequests[i]);
-                }
+                $log.info(response.data)
             });
     }
 }
