@@ -1,5 +1,6 @@
 package hello.rewind;
 
+import hello.movement.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,10 @@ public class RewindController {
         RestTemplate restTemplate = new RestTemplate();
         List<Direction> previousRequests = restTemplate.getForObject("http://localhost:8080/rewind/all", List.class);
         log.info(previousRequests.toString());
+
+        for (Direction request : previousRequests) {
+            restTemplate.getForObject(request.getDirection(), Response.class);
+        }
 
         return previousRequests;
     }
