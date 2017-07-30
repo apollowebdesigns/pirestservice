@@ -23,13 +23,12 @@ public class RewindController {
 
         RestTemplate restTemplate = new RestTemplate();
         List<LinkedHashMap> previousRequests = restTemplate.getForObject("http://localhost:8080/rewind/all", List.class);
-        log.info(previousRequests.toString());
-
-        for (LinkedHashMap request : previousRequests) {
-            log.debug("what is in the hashmap?");
-            log.debug(request.toString());
-            log.debug(request.entrySet().toString());
+        for (LinkedHashMap map: previousRequests) {
+            map.forEach((key, value) -> {
+                System.out.println("Key : " + key + " Value : " + value);
+            });
         }
+
 
         return previousRequests;
     }

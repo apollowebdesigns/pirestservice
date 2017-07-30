@@ -81,45 +81,33 @@ function driveService ($http, $log, rewindFactory) {
         });
     }
 
-    function getRewind() {
-
-        if (rewindFactory.rewindRequests.length > 0) {
-            switch(rewindFactory.rewindRequests[rewindFactory.rewindRequests.length - 1]) {
-                case "/hits/backwards":
-                    return _driveBackwards("flagged");
-                    break;
-                case "/hits/forwards":
-                    return _driveForwards("flagged");
-                    break;
-                case "/hits/left":
-                    return _driveLeft("flagged");
-                    break;
-                case "/hits/right":
-                    return _driveRight("flagged");
-                    break;
-            }
-        }   else {
-            return;
+    function getRewind(arg) {
+        switch(arg) {
+            case "/hits/backwards":
+                return _driveBackwards("flagged");
+                break;
+            case "/hits/forwards":
+                return _driveForwards("flagged");
+                break;
+            case "/hits/left":
+                return _driveLeft("flagged");
+                break;
+            case "/hits/right":
+                return _driveRight("flagged");
+                break;
         }
-        rewindFactory.rewindRequests.pop();
-        getRewind()
-
     }
 
     function _rewind() {
         $log.info('left function entered');
         return $http.get("/hits/rewind")
-            .then(function() {
+            .then(function(response) {
                 $log.info('lets rewind');
-                var tempRequests = [];
-                //copies current requests into temp storage
-                for (var i = 0; i < rewindFactory.rewindRequests.length; i++)
-                    tempRequests.push(rewindFactory.rewindRequests[i]);
+                var tempRequests = response;
                 $log.info("temp requests are");
                 $log.debug(tempRequests);
-                getRewind(tempRequests[tempRequests.length - 1]);
-                while (rewindFactory.rewindRequests.length > 0) {
-                    rewindFactory.rewindRequests.pop();
+                for (var i = 0; i < tempRequests.length; i++) {
+                    getRewind(tempRequests[i]);
                 }
             });
     }
