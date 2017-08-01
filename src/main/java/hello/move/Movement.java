@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 public interface Movement {
 
     /**
-     * A default method for moveing the Raspberry Pi
+     * Default method for moving the Raspberry Pi
      * @throws InterruptedException
      */
     default void move() throws InterruptedException {

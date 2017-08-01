@@ -35,9 +35,6 @@ public class Forwards extends MovementImpl implements Movement {
      */
     public synchronized void move() throws InterruptedException {
 
-        /**
-         * file write out test
-         */
         String serial = "test";
 
         try {

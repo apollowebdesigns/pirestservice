@@ -3,9 +3,6 @@ package hello.horn;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.impl.GpioControllerImpl;
 
-/**
- * Created by andrewevans on 13/06/2017.
- */
 public class Horn {
     protected void finalize() {
         System.out.println("last cleanup!");

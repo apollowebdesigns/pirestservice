@@ -23,7 +23,13 @@
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
+            <li><h3 class="font-black container top-space">Raspberry Pi Options</h3></li>
+            <li><a href="#" class="container top-space">Map</a></li>
+            <li class="top-space">
+                <div class="container">
+                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
+                </div>
+            </li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -71,11 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <h4>Which way is the pi going?</h4>
-                <div ng-bind="appCtrl.requestedData"></div>
-                <div>
-                    <button class="btn blue-grey-text btn-large" ng-click="appCtrl.killPi()">Exit</button>
-                </div>
+                <h4>Rewind The Pi</h4>
                 <div>
                     <button class="btn-floating btn-large waves-effect waves-light purple" ng-click="appCtrl.rewind()"><i class="large material-icons">replay</i></button>
                 </div>
@@ -100,8 +102,8 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                <h5 class="white-text">Raspberry Pi Application</h5>
+                <p class="grey-text text-lighten-4">The Raspberry Pi App is a mobile app that you can use to view your Raspberry Pi cart and control it</p>
 
 
             </div>
