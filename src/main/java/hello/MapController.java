@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MapController {
 
     @RequestMapping("/map")
-    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+    public String greeting(@RequestParam(value="name", required=false, defaultValue="Where is the pi?") String name, Model model) {
         model.addAttribute("name", name);
         return "map";
     }
