@@ -13,14 +13,36 @@
     <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="https://fonts.googleapis.com/css?family=Mitr|Squada+One" rel="stylesheet" />
     <!-- Custom CSS -->
+    <link rel= "stylesheet" type= "text/css" href= "styles/styles.css" />
+    <link rel= "stylesheet" type= "text/css" href= "styles/buttons.css" />
     <style>
         #mapid { height: 900px; }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="heading" th:text="'' + ${name} + '?'" />
-</div>
+<!--<div class="container">-->
+    <!--<h1 class="heading" th:text="'' + ${name} + '?'" />-->
+<!--</div>-->
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Raspberry Pi</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav background">
+            <li><h3 class="font-black container top-space">Raspberry Pi Options</h3></li>
+            <li><a href="/" class="container top-space">Home</a></li>
+            <li><a href="/map" class="container top-space">Map</a></li>
+            <li class="top-space">
+                <div class="container">
+                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
+                </div>
+            </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
 <div id="mapid"></div>
 </body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -58,4 +80,23 @@
         [50.735210, -3.534355]
     ]).addTo(mymap);
 </script>
+<!--cdn imports-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
+<!--customjs imports-->
+<!--jQuery imports-->
+<script src= "scripts/jquery/init.js"></script>
+<script src= "scripts/jquery/camera.js"></script>
+<!--AngularJS imports-->
+<script src= "scripts/app.js"></script>
+<script src= "scripts/MapController.js"></script>
+<script src= "scripts/AppController.js"></script>
+<script src= "scripts/DebugController.js"></script>
+<script src= "scripts/rewindFactory.js"></script>
+<script src= "scripts/ledService.js"></script>
+<script src= "scripts/driveService.js"></script>
+<script src= "scripts/exitService.js"></script>
 </html>
