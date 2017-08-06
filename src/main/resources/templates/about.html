@@ -12,16 +12,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="styles/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="https://fonts.googleapis.com/css?family=Mitr|Squada+One" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+
     <!-- Custom CSS -->
     <link rel= "stylesheet" type= "text/css" href= "styles/styles.css" />
     <link rel= "stylesheet" type= "text/css" href= "styles/buttons.css" />
-    <style>
-        #mapid { height: 900px; }
-    </style>
+
 </head>
 <body>
 <!--<div class="container">-->
-    <!--<h1 class="heading" th:text="'' + ${name} + '?'" />-->
+<!--<h1 class="heading" th:text="'' + ${name} + '?'" />-->
 <!--</div>-->
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
@@ -31,9 +33,7 @@
             <li><a href="/map">Map</a></li>
             <li><a href="/about">About</a></li>
             <li>
-                <div>
-                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
-                </div>
+                <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
             </li>
         </ul>
 
@@ -51,49 +51,31 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div id="mapid"></div>
+
+<main class="container">
+    <div class="responsive">
+        <img src="images/IMG_1079.jpg" style="height: 600px; width: auto; max-height: 100%"/>
+        <img src="images/IMG_1080.jpg" style="height: 600px; width: auto; max-height: 100%"/>
+        <img src="images/IMG_1061.jpg" style="height: 600px; width: auto; max-height: 100%"/>
+    </div>
+    <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
+</main>
+
+
 </body>
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
         integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
         crossorigin=""></script>
-<script>
-    var mymap = L.map('mapid').setView([50.7, -3.52751], 13);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXBvbGxvd2ViZGVzaWducyIsImEiOiJjajV6czJreHIwYzFnMnlud3IzY2kxZm00In0.QqYsU2Xovt4xFKu8vj2YYQ', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'your.mapbox.access.token'
-    }).addTo(mymap);
-
-    var folks = L.marker([50.856981, -3.352030]).addTo(mymap);
-    //folks.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var base = L.marker([50.713535, -3.537174]).addTo(mymap);
-    //base.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var exeterlibrary = L.marker([50.725125, -3.530498]).addTo(mymap);
-    //exeterlibrary.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var metoffice = L.marker([50.727622, -3.475646]).addTo(mymap);
-    //metoffice.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var uniexeter = L.marker([50.735210, -3.534355]).addTo(mymap);
-    //uniexeter.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var polygon = L.polygon([
-        [50.713535, -3.537174],
-        [50.727622, -3.475646],
-        [50.735210, -3.534355]
-    ]).addTo(mymap);
-</script>
 <!--cdn imports-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 <!--customjs imports-->
 <!--jQuery imports-->
 <script src= "scripts/jquery/init.js"></script>
@@ -107,4 +89,5 @@
 <script src= "scripts/ledService.js"></script>
 <script src= "scripts/driveService.js"></script>
 <script src= "scripts/exitService.js"></script>
+<script src="scripts/jquery/slider.js"></script>
 </html>
