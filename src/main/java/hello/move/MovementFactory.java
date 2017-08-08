@@ -6,6 +6,15 @@ import hello.movement.left.Left;
 import hello.movement.right.Right;
 
 public class MovementFactory {
+
+    private MovementFactory() {}
+
+    private static MovementFactory instance = new MovementFactory();
+
+    public static MovementFactory getInstance() {
+        return instance;
+    }
+
     public Movement getDirection(String direction) {
         if (direction == null) {
             return null;
