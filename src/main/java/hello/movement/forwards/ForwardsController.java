@@ -19,7 +19,7 @@ public class ForwardsController {
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
 
-        Movement forwards = movementFactory.getMovement("Forwards");
+        Movement forwards = movementFactory.getDirection("Forwards");
         forwards.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));

@@ -6,7 +6,7 @@ import hello.movement.left.Left;
 import hello.movement.right.Right;
 
 public class MovementFactory {
-    public Movement getMovement(String direction) {
+    public Movement getDirection(String direction) {
         if (direction == null) {
             return null;
         }
