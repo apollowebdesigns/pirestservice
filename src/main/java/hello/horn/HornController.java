@@ -1,6 +1,9 @@
 package hello.horn;
 
+import hello.HelloWorld;
 import hello.movement.response.Response;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +18,10 @@ public class HornController {
 
     @RequestMapping("/hits/blue")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+        obj.getMessage();
+
         Horn horn = new Horn();
         horn.soundHorn();
         return new Response(counter.incrementAndGet(),
