@@ -1,5 +1,6 @@
 package hello.movement.forwards;
 
+import hello.move.Direction;
 import hello.move.Movement;
 import hello.move.MovementFactory;
 import hello.movement.response.Response;
@@ -18,7 +19,7 @@ public class ForwardsController {
 
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement forwards = movementFactory.getDirection("Forwards");
+        Movement forwards = movementFactory.getDirection(Direction.FORWARDS);
         forwards.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));

@@ -15,20 +15,20 @@ public class MovementFactory {
         return instance;
     }
 
-    public Movement getDirection(String direction) {
+    public Movement getDirection(Direction direction) {
         if (direction == null) {
             return null;
         }
-        if (direction.equalsIgnoreCase("Forwards")) {
+        if (direction.equals(Direction.FORWARDS)) {
             return new Forwards();
         }
-        if (direction.equalsIgnoreCase("Backwards")) {
+        if (direction.equals(Direction.BACKWARDS)) {
             return new Backwards();
         }
-        if (direction.equalsIgnoreCase("Left")) {
+        if (direction.equals(Direction.LEFT)) {
             return new Left();
         }
-        if (direction.equalsIgnoreCase("Right")) {
+        if (direction.equals(Direction.RIGHT)) {
             return new Right();
         }
 

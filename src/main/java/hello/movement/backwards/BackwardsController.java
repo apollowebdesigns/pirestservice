@@ -1,5 +1,6 @@
 package hello.movement.backwards;
 
+import hello.move.Direction;
 import hello.move.Movement;
 import hello.move.MovementFactory;
 import hello.movement.response.Response;
@@ -24,7 +25,7 @@ public class BackwardsController {
      */
     @RequestMapping("/hits/backwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement backwards = movementFactory.getDirection("Backwards");
+        Movement backwards = movementFactory.getDirection(Direction.BACKWARDS);
         backwards.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));

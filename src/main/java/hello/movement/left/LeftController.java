@@ -1,5 +1,6 @@
 package hello.movement.left;
 
+import hello.move.Direction;
 import hello.move.Movement;
 import hello.move.MovementFactory;
 import hello.movement.response.Response;
@@ -18,7 +19,7 @@ public class LeftController {
 
     @RequestMapping("/hits/left")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement left = movementFactory.getDirection("Left");
+        Movement left = movementFactory.getDirection(Direction.LEFT);
         left.move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
