@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class LeftOrder {
 
-    @RequestMapping("/hits/left-order")
+    @RequestMapping("/hits/leftorder")
     public Response response() {
         RestTemplate restTemplate = new RestTemplate();
         List<Direction> previousRequests = restTemplate.getForObject("http://localhost:9991/orders/add?time=now&dir=/hits/left", List.class);
