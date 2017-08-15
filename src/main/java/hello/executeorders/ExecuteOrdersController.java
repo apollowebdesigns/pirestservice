@@ -33,6 +33,7 @@ public class ExecuteOrdersController {
         }
 
         restTemplate.getForObject("http://localhost:8080/orders/clear", Object.class);
+        new RestTemplate().getForObject("http://localhost:8080/rewind/clear", Object.class);
         return previousRequests;
     }
 }
