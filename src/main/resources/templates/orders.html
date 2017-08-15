@@ -19,9 +19,9 @@
         #mapid { height: 900px; }
     </style>
 </head>
-<body>
+<body ng-app="app" ng-controller="OrdersController as ordersCtrl">
 <!--<div class="container">-->
-    <!--<h1 class="heading" th:text="'' + ${name} + '?'" />-->
+<!--<h1 class="heading" th:text="'' + ${name} + '?'" />-->
 <!--</div>-->
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
@@ -32,7 +32,7 @@
             <li><a href="/about">About</a></li>
             <li>
                 <div>
-                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
+                    <button class="btn blue-grey-text btn-medium" ng-click="ordersCtrl.killPi()">Exit Server</button>
                 </div>
             </li>
         </ul>
@@ -45,50 +45,47 @@
             <li><a href="/about" class="container top-space">About</a></li>
             <li class="top-space">
                 <div class="container">
-                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
+                    <button class="btn blue-grey-text btn-medium" ng-click="ordersCtrl.killPi()">Exit Server</button>
                 </div>
             </li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div id="mapid"></div>
+<main class="container">
+    <h1>Orders people!</h1>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 center button-background">
+                    <h3><i class="mdi-content-send brown-text"></i></h3>
+                    <div>
+                        <div class="row">
+                            <div class="row">
+                                <button class="btn waves-effect waves-light" ng-click="ordersCtrl.driveForwards()">forwards</button>
+                            </div>
+                            <div class="row">
+                                <button class="btn waves-effect waves-light" ng-click="ordersCtrl.driveLeft()">left</button>
+                                <button class="btn-floating btn-large waves-effect waves-light green" ng-click="ordersCtrl.orderData()"><i class="large material-icons">play_circle_outline</i></button>
+                                <button class="btn waves-effect waves-light" ng-click="ordersCtrl.driveRight()">right</button>
+                            </div>
+                            <div class="row">
+                                <button class="btn waves-effect waves-light" ng-click="ordersCtrl.driveBackwards()">backwards</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Rewind The Pi</h4>
+                    <div>
+                        <button class="btn-floating btn-large waves-effect waves-light purple" ng-click="ordersCtrl.orderData()"><i class="large material-icons">replay</i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
 </body>
-<!-- Make sure you put this AFTER Leaflet's CSS -->
-<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
-        integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
-        crossorigin=""></script>
-<script>
-    var mymap = L.map('mapid').setView([50.7, -3.52751], 13);
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXBvbGxvd2ViZGVzaWducyIsImEiOiJjajV6czJreHIwYzFnMnlud3IzY2kxZm00In0.QqYsU2Xovt4xFKu8vj2YYQ', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'your.mapbox.access.token'
-    }).addTo(mymap);
-
-    var folks = L.marker([50.856981, -3.352030]).addTo(mymap);
-    //folks.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var base = L.marker([50.713535, -3.537174]).addTo(mymap);
-    //base.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var exeterlibrary = L.marker([50.725125, -3.530498]).addTo(mymap);
-    //exeterlibrary.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var metoffice = L.marker([50.727622, -3.475646]).addTo(mymap);
-    //metoffice.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var uniexeter = L.marker([50.735210, -3.534355]).addTo(mymap);
-    //uniexeter.bindPopup("<b>The Pi was here!</b><br />Beep Beep").openPopup();
-
-    var polygon = L.polygon([
-        [50.713535, -3.537174],
-        [50.727622, -3.475646],
-        [50.735210, -3.534355]
-    ]).addTo(mymap);
-</script>
 <!--cdn imports-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
@@ -108,4 +105,7 @@
 <script src= "scripts/ledService.js"></script>
 <script src= "scripts/driveService.js"></script>
 <script src= "scripts/exitService.js"></script>
+<script src="scripts/orderDirectionService.js"></script>
+<script src="scripts/ordersService.js"></script>
+<script src="scripts/OrdersController.js"></script>
 </html>

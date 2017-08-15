@@ -11,9 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,19 +31,6 @@ public class Forwards extends MovementImpl implements Movement {
      * @throws InterruptedException
      */
     public synchronized void move() throws InterruptedException {
-
-        String serial = "test";
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream("/tmp/employee.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(serial);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/employee.ser");
-        }catch(IOException i) {
-            i.printStackTrace();
-        }
 
         //String commands
         logger.debug("testing spring ioc");
