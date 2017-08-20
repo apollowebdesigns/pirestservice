@@ -20,8 +20,8 @@
         <a id="logo-container" href="#" class="brand-logo">Raspberry Pi</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
-            <li><a href="/map">Map</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/map" id="mapnav">Map</a></li>
+            <li><a href="/about" id="aboutnav">About</a></li>
             <li>
                 <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
             </li>
@@ -73,7 +73,7 @@
                 <div>
                     <div class="row">
                         <div class="row">
-                            <button class="btn waves-effect waves-light" ng-click="appCtrl.driveForwards()">forwards</button>
+                            <button id="forwards" class="btn waves-effect waves-light" ng-click="appCtrl.driveForwards()">forwards</button>
                         </div>
                         <div class="row">
                             <button class="btn waves-effect waves-light" ng-click="appCtrl.driveLeft()">left</button>
