@@ -10,11 +10,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.IOException;
+
 public class MapNavSteps {
+
     private WebDriver driver;
 
     @Before
-    public void before() {
+    public void before() throws IOException {
+        Runtime.getRuntime().exec("mvn spring-boot:run -Dserver.port=9876");
         driver = new FirefoxDriver();
         driver.navigate().to("http://localhost:9876");
     }
@@ -23,8 +27,6 @@ public class MapNavSteps {
     public void after() {
         driver.quit();
     }
-
-    //Run server instance first, use wiremock?
 
     @Given("^I click button map on navbar '(.*?)'$")
     public void clickNavbarMap(String searchTerm) {

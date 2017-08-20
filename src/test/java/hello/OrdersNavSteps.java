@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.IOException;
 
-public class AboutNavSteps {
+public class OrdersNavSteps {
     private WebDriver driver;
 
     @Before
@@ -29,20 +29,20 @@ public class AboutNavSteps {
 
     //Run server instance first, use wiremock?
 
-    @Given("^I want to go to the about page$")
+    @Given("^I want to go to the orders page$")
     public void clickNavbarMap() {
-        WebElement searchButton = driver.findElement(By.id("aboutnav"));
+        WebElement searchButton = driver.findElement(By.id("ordersnav"));
     }
 
-    @When("^I click the nav about button$")
+    @When("^I click the Move! about button$")
     public void isItMap() {
-        WebElement searchButton = driver.findElement(By.id("aboutnav"));
+        WebElement searchButton = driver.findElement(By.id("ordersnav"));
         searchButton.click();
     }
 
-    @Then("I should be on the about page$")
+    @Then("I should be on the orders page$")
     public void assertSingleResult() {
-        WebElement logo = driver.findElement(By.id("logo-container"));
-        assert(logo.getText().equals("Raspberry Pi"));
+        WebElement logo = driver.findElement(By.id("heading"));
+        assert(logo.getText().equals("Orders people!"));
     }
 }

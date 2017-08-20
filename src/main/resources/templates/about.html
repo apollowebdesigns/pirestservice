@@ -30,11 +30,10 @@
         <a id="logo-container" href="#" class="brand-logo">Raspberry Pi</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
-            <li><a href="/map">Map</a></li>
-            <li><a href="/about">About</a></li>
-            <li>
-                <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
-            </li>
+            <li><a href="/orders" id="ordersnav">Move!</a></li>
+            <li><a href="/map" id="mapnav">Map</a></li>
+            <li><a href="/about" id="aboutnav">About</a></li>
+            <li><a ng-click="appCtrl.killPi()">Exit Server</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav background">
@@ -43,11 +42,7 @@
             <li><a href="/orders" class="container top-space">Move!</a></li>
             <li><a href="/map" class="container top-space">Map</a></li>
             <li><a href="/about" class="container top-space">About</a></li>
-            <li class="top-space">
-                <div class="container">
-                    <button class="btn blue-grey-text btn-medium" ng-click="appCtrl.killPi()">Exit Server</button>
-                </div>
-            </li>
+            <li><a class="container top-space" ng-click="appCtrl.killPi()">Exit Server</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
