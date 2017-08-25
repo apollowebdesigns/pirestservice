@@ -17,6 +17,13 @@ public class BackwardsController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    private Movement backwards = movementFactory.getDirection(Direction.BACKWARDS);
+
+    public Movement getBackwards() {
+        assert backwards != null : backwards = movementFactory.getDirection(Direction.BACKWARDS);
+        return backwards;
+    }
+
     /**
      * Function for the controller to move Raspberry Pi backwards.
      * @param name - used as a default placeholder
@@ -25,8 +32,7 @@ public class BackwardsController {
      */
     @RequestMapping("/hits/backwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement backwards = movementFactory.getDirection(Direction.BACKWARDS);
-        backwards.move();
+        getBackwards().move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }
