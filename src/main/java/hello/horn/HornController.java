@@ -16,11 +16,11 @@ public class HornController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    private Horn horn = new Horn();
+    private Horn hornImpl = new HornImpl();
 
     public Horn getHorn() {
-        assert horn != null : horn = new Horn();
-        return horn;
+        assert hornImpl != null : hornImpl = new HornImpl();
+        return hornImpl;
     }
 
     @RequestMapping("/hits/blue")
