@@ -16,14 +16,20 @@ public class HornController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    private Horn horn = new Horn();
+
+    public Horn getHorn() {
+        assert horn != null : horn = new Horn();
+        return horn;
+    }
+
     @RequestMapping("/hits/blue")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
         obj.getMessage();
 
-        Horn horn = new Horn();
-        horn.soundHorn();
+        getHorn().soundHorn();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }
