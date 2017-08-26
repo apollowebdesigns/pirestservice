@@ -1,4 +1,4 @@
-package hello.unit;
+package hello.unit.controllers;
 
 import hello.move.Movement;
 import hello.movement.backwards.BackwardsController;
