@@ -17,10 +17,16 @@ public class ForwardsController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    private Movement forwards = movementFactory.getDirection(Direction.FORWARDS);
+
+    public Movement getForwards() {
+        assert forwards != null : forwards = movementFactory.getDirection(Direction.FORWARDS);
+        return forwards;
+    }
+
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement forwards = movementFactory.getDirection(Direction.FORWARDS);
-        forwards.move();
+        getForwards().move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }
