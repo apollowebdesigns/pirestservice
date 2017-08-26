@@ -17,10 +17,16 @@ public class LeftController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    private Movement left = movementFactory.getDirection(Direction.LEFT);
+
+    public Movement getLeft() {
+        assert left != null : left = movementFactory.getDirection(Direction.LEFT);
+        return left;
+    }
+
     @RequestMapping("/hits/left")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
-        Movement left = movementFactory.getDirection(Direction.LEFT);
-        left.move();
+        getLeft().move();
         return new Response(counter.incrementAndGet(),
                 String.format(template, name));
     }
