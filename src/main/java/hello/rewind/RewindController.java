@@ -18,11 +18,27 @@ public class RewindController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
+    private List<LinkedHashMap> previousRequests;
+
+    public List<LinkedHashMap> getPreviousRequests() {
+        RestTemplate restTemplate = new RestTemplate();
+        previousRequests = restTemplate.getForObject("http://localhost:8080/rewind/all", List.class);
+        return previousRequests;
+    }
+
+    private Object resetRewindRequests;
+
+    public Object getResetRewindRequests() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getForObject("http://localhost:8080/rewind/clear", Object.class);
+        return resetRewindRequests;
+    }
+
     @RequestMapping("/hits/rewind")
     public List<LinkedHashMap> response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
 
         RestTemplate restTemplate = new RestTemplate();
-        List<LinkedHashMap> previousRequests = restTemplate.getForObject("http://localhost:8080/rewind/all", List.class);
+        List<LinkedHashMap> previousRequests = getPreviousRequests();
 
         for (int i = previousRequests.size() - 1; i >= 0; i--) {
             LinkedHashMap request = previousRequests.get(i);
@@ -32,7 +48,8 @@ public class RewindController {
             restTemplate.getForObject(requested, Object.class);
         }
 
-        restTemplate.getForObject("http://localhost:8080/rewind/clear", Object.class);
+        getResetRewindRequests();
+
         return previousRequests;
     }
 }
