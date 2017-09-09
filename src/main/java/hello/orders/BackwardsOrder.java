@@ -2,6 +2,7 @@ package hello.orders;
 
 import hello.movement.response.Response;
 import hello.rewind.Direction;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 public class BackwardsOrder {
 
+    @CrossOrigin(origins = "http://localhost:80")
     @RequestMapping("/hits/backwardsorder")
     public Response response() {
         RestTemplate restTemplate = new RestTemplate();

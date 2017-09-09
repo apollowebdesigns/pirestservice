@@ -4,6 +4,7 @@ import hello.move.Direction;
 import hello.move.Movement;
 import hello.move.MovementFactory;
 import hello.movement.response.Response;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,7 @@ public class BackwardsController {
      * @return response - used to confirm request has been successful.
      * @throws InterruptedException
      */
+    @CrossOrigin(origins = "http://localhost:80")
     @RequestMapping("/hits/backwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         getBackwards().move();

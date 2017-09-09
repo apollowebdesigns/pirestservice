@@ -4,6 +4,7 @@ import hello.move.Direction;
 import hello.move.Movement;
 import hello.move.MovementFactory;
 import hello.movement.response.Response;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ public class RightController {
         return right;
     }
 
+    @CrossOrigin(origins = "http://localhost:80")
     @RequestMapping("/hits/right")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         getRight().move();
