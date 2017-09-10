@@ -25,7 +25,7 @@ public class ForwardsController {
         return forwards;
     }
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/forwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         getForwards().move();

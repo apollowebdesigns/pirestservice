@@ -31,7 +31,7 @@ public class BackwardsController {
      * @return response - used to confirm request has been successful.
      * @throws InterruptedException
      */
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/backwards")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         getBackwards().move();

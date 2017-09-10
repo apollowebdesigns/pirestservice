@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class BackwardsOrder {
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/backwardsorder")
     public Response response() {
         RestTemplate restTemplate = new RestTemplate();

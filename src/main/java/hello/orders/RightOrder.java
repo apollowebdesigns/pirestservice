@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class RightOrder {
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/rightorder")
     public Response response() {
         RestTemplate restTemplate = new RestTemplate();

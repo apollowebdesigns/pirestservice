@@ -25,7 +25,7 @@ public class RightController {
         return right;
     }
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/right")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         getRight().move();

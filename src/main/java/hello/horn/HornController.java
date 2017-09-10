@@ -24,7 +24,7 @@ public class HornController {
         return hornImpl;
     }
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/blue")
     public Response response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");

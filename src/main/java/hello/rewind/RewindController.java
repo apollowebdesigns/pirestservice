@@ -35,7 +35,7 @@ public class RewindController {
         return resetRewindRequests;
     }
 
-    @CrossOrigin(origins = "http://localhost:80")
+    @CrossOrigin
     @RequestMapping("/hits/rewind")
     public List<LinkedHashMap> response(@RequestParam(value="name", defaultValue="World") String name) throws InterruptedException {
 
