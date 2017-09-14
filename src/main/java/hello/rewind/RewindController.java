@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+@CrossOrigin
 @RestController
 public class RewindController {
     private static final Logger log = LoggerFactory.getLogger(RewindController.class);
