@@ -30,7 +30,8 @@ public class ExecuteOrdersController {
         for (LinkedHashMap request : previousRequests) {
             log.debug("direction of order");
             log.debug(request.get("direction").toString());
-            String requested = "http://localhost" + request.get("direction");
+            //changing for localhost on port 8888
+            String requested = "http://localhost:8888" + request.get("direction");
             restTemplate.getForObject(requested, Object.class);
         }
 

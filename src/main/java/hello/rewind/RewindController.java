@@ -47,7 +47,8 @@ public class RewindController {
             LinkedHashMap request = previousRequests.get(i);
             log.debug("direction");
             log.debug(request.get("direction").toString());
-            String requested = "http://localhost" + request.get("direction");
+            //changing for localhost on port 8888
+            String requested = "http://localhost:8888" + request.get("direction");
             restTemplate.getForObject(requested, Object.class);
         }
 
