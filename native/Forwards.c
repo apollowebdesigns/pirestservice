@@ -1,5 +1,6 @@
 /**
  * Currently a demo for moving forwards - is set currently to gpio pin 18
+ * NB - when running, you need to run as root to access the gpio pins
  */
 #define BCM2708_PERI_BASE        0x20000000
 #define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
