@@ -69,6 +69,7 @@ Loading up Java
 <code>
 git clone https://github.com/apollowebdesigns/pirestservice.git
 </code>
+<br />
 
 ### Compiling Native Java code with JNI
 
@@ -80,24 +81,50 @@ For a HelloWorld example create
 <code>
 javac HelloWorld.java
 </code>
+<br />
 
 Then, create a headers file for the C program, so the Java program can hook into it.
 
+<br />
 <code>
 javah -jni HelloWorld
 </code>
+<br />
+
+Create the C file with desired code in -
+
+For a Hello World example, use this file
+
+<br />
+<code>
+ #include <jni.h>
+ #include <stdio.h>
+ #include "HelloWorld.h"
+
+ JNIEXPORT void JNICALL
+ Java_HelloWorld_print(JNIEnv *env, jobject obj)
+ {
+     printf("Hello World!\n");
+     return;
+ }
+</code>
+<br />
+
 
 Create a shared library for the C code to be accessed by Java
 
+<br />
 <code>
 gcc -shared -I/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include -I/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include/linux  HelloWorld.c -o libHelloWorld.so
 </code>
+<br />
 
 When in the current directory of the running file run for the HelloWorld example
 
 <code>
 java -Djava.library.path=. HelloWorld
 </code>
+<br />
 
 Here is a website for more info
 
