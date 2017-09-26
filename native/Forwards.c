@@ -1,6 +1,7 @@
 /**
  * Currently a demo for moving forwards - is set currently to gpio pin 18
  * NB - when running, you need to run as root to access the gpio pins
+ * Project now runs 2 gpio pins simultaneously
  */
 #define BCM2708_PERI_BASE        0x20000000
 #define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
@@ -52,10 +53,14 @@ int main(int argc, char **argv)
   setup_io();
 
   INP_GPIO(18); // must use INP_GPIO before we can use OUT_GPIO
+  INP_GPIO(23);
   OUT_GPIO(18);
+  OUT_GPIO(23);
   GPIO_SET = 1<<18;
+  GPIO_SET = 1<<23;
   sleep(1);
   GPIO_CLR = 1<<18;
+  GPIO_CLR = 1<<23;
   sleep(1);
 
   return 0;
