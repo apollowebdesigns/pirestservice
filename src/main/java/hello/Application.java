@@ -65,7 +65,7 @@ public class Application {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(3);
         InetAddress ip = null;
         String hostname = "";
         try {
@@ -83,7 +83,7 @@ public class Application {
         String pass = "Blackened666";
         String[] to = { "andrewevans0@outlook.com" }; // list of recipient email addresses
         String subject = "Java send mail example";
-        String body = "Welcome to Raspberry Pi! Your IP address is " + ip.getHostAddress();
+        String body = "Welcome to Raspberry Pi! Your IP address is " + ip.getAddress();
 
         sendFromGMail(from, pass, to, subject, body);
         SpringApplication.run(Application.class, args);
