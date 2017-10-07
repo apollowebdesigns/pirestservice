@@ -15,6 +15,7 @@ import javax.mail.internet.MimeMessage;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class Application {
@@ -63,7 +64,8 @@ public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         InetAddress ip = null;
         String hostname = "";
         try {
