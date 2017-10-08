@@ -83,7 +83,7 @@ public class Application {
         String pass = "RideThePi1993";
         String[] to = { "andrewevans0@outlook.com" }; // list of recipient email addresses
         String subject = "Java send mail example";
-        String body = "Welcome to Raspberry Pi! Your IP address is " + ip.getHostAddress();
+        String body = "Welcome to Raspberry Pi! Your IP address is " + ip.getHostName();
 
         sendFromGMail(from, pass, to, subject, body);
         SpringApplication.run(Application.class, args);
