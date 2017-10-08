@@ -129,3 +129,26 @@ java -Djava.library.path=. HelloWorld
 Here is a website for more info
 
 https://www.java-tips.org/other-api-tips-100035/148-jni/1378-simple-example-of-using-the-java-native-interface.html
+
+## Setting up ip addresses
+
+On the raspberry pi, the ip address is emailed out.
+
+<code>
+
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+255.255.255.255 broadcasthost
+::1             localhost
+
+</code>
+<br>
+
+use the file from
+
+/etc/hosts
