@@ -68,18 +68,14 @@ public class Application {
         TimeUnit.SECONDS.sleep(3);
         InetAddress ip = null;
         String hostname = "";
-        for (int i = 0; i < 5; i++) {
-            Thread.sleep(3000);
-            try {
-                ip = InetAddress.getLocalHost();
-                hostname = ip.getHostName();
-                System.out.println("Your current IP address : " + ip);
-                System.out.println("Your current Hostname : " + hostname);
+        try {
+            ip = InetAddress.getLocalHost();
+            hostname = ip.getHostName();
+            System.out.println("Your current IP address : " + ip);
+            System.out.println("Your current Hostname : " + hostname);
 
-            } catch (UnknownHostException e) {
-
-                e.printStackTrace();
-            }
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
 
 
