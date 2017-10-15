@@ -54,10 +54,10 @@ public class Application {
             transport.close();
         }
         catch (AddressException ae) {
-            ae.printStackTrace();
+            log.error(ae.toString());
         }
         catch (MessagingException me) {
-            me.printStackTrace();
+            log.error(me.toString());
         }
     }
 
@@ -79,10 +79,10 @@ public class Application {
 
             sendFromGMail(from, pass, to, subject, body);
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            log.error(e.toString());
         } catch (Exception e) {
             System.out.println("different exception");
-            e.printStackTrace();
+            log.error(e.toString());
         } finally {
             SpringApplication.run(Application.class, args);
         }
