@@ -4,14 +4,11 @@ import hello.move.Movement;
 import hello.movement.left.LeftController;
 import hello.movement.response.Response;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class LeftControllerTest {
 

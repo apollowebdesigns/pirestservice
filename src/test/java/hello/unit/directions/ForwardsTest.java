@@ -1,4 +1,4 @@
-package hello.unit;
+package hello.unit.directions;
 
 
 import hello.movement.forwards.Forwards;
