@@ -68,7 +68,7 @@ public class Right extends MovementImpl implements Movement {
 
 
         logger.info("before thread");
-        Thread.sleep(2000);
+        Thread.sleep(500);
         logger.info("after thread");
         System.out.println(Thread.activeCount());
         logger.info("before second shutdown options");

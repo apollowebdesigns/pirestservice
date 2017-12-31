@@ -68,7 +68,7 @@ public class Left extends MovementImpl implements Movement {
 
 
         logger.debug("before thread");
-        Thread.sleep(2000);
+        Thread.sleep(500);
         logger.debug("after thread");
         System.out.println(Thread.activeCount());
         logger.debug("before second shutdown options");
