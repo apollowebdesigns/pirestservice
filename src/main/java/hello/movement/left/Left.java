@@ -39,12 +39,12 @@ public class Left extends MovementImpl implements Movement {
 
         logger.debug("--> GPIO state should be: ON");
 
-        motor1A.high();
-        motor1B.low();
+        motor1A.low();
+        motor1B.high();
         motor1E.high();
 
-        motor2A.low();
-        motor2B.high();
+        motor2A.high();
+        motor2B.low();
         motor2E.high();
 
         motor1A.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
