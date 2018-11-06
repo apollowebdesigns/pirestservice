@@ -76,7 +76,7 @@ diskutil unmountDisk /dev/disk2
 
 sudo dd if=~/Documents/[raspberianjessie].img of=/dev/rdisk2 bs=1m
 ```
-## [Java installation and jni](docs/java.md)
+## [Java installation and jni](docs/javaguide.md)
 
 ## Cloning SD card
 
