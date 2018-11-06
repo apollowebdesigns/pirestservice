@@ -1,3 +1,8 @@
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://cdn.sparkfun.com//assets/parts/1/2/8/2/8/14643-Raspberry_Pi_3_B_-02.jpg "Logo Title Text 2"
+
 ## Repositories needed
 
 ### Pi Database MySQL
