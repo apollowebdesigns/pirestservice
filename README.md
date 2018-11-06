@@ -31,12 +31,7 @@ check $PATH and move maven folder to /opt/ as this is where it should be for it 
 https://www.xianic.net/post/installing-maven-on-the-raspberry-pi/
 ```
 
-Install PHP
-
-```
-sudo apt-get update
-sudo apt-get install apache2 php5
-```
+## [Php installation](docs/phpguide.md)
 
 Raspberry Pi Camera
 
