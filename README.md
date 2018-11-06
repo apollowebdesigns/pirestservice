@@ -64,6 +64,10 @@ diskutil unmountDisk /dev/disk2
 sudo dd if=~/Documents/[raspberianjessie].img of=/dev/rdisk2 bs=1m
 </code>
 
+## Cloning SD card
+
+Use this link to [clone SD card](https://computers.tutsplus.com/articles/how-to-clone-raspberry-pi-sd-cards-using-the-command-line-in-os-x--mac-59911)
+
 Loading up Java
 
 <code>
