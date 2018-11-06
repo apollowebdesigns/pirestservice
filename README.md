@@ -20,13 +20,16 @@ maven needs to be installed from here.
 
 check $PATH and move maven folder to /opt/ as this is where it should be for it to be found on path!!!
 
-<code>https://www.xianic.net/post/installing-maven-on-the-raspberry-pi/</code>
+```
+https://www.xianic.net/post/installing-maven-on-the-raspberry-pi/
+```
 
 Install PHP
 
-<code>sudo apt-get update</code>
-<br>
-<code>sudo apt-get install apache2 php5</code>
+```
+sudo apt-get update
+sudo apt-get install apache2 php5
+```
 
 Raspberry Pi Camera
 
@@ -38,15 +41,18 @@ folder structure to be made
 
 /home/pi/Documents/springpi/pirestservice
 
-add using 
+add using:
 
-<code>chmod 755 init.sh</code>
-<br>
-<code>chmod 755 update.sh</code>
+```
+chmod 755 init.sh
+chmod 755 update.sh
+```
 
 you will need to update.sh first as there will be no jar to run for init
 
-<code>sudo crontab -e</code>
+```
+sudo crontab -e
+```
 
 to update the crontab like in the tutorial and give seperate logs!
 
@@ -56,13 +62,13 @@ https://superuser.com/questions/421004/how-to-fix-warning-about-ecdsa-host-key
 
 Install raspberrian
 
-<code>
+```
 diskutil list
 
 diskutil unmountDisk /dev/disk2
 
 sudo dd if=~/Documents/[raspberianjessie].img of=/dev/rdisk2 bs=1m
-</code>
+```
 
 ## Cloning SD card
 
@@ -70,10 +76,9 @@ Use this link to [clone SD card](https://computers.tutsplus.com/articles/how-to-
 
 Loading up Java
 
-<code>
+```
 git clone https://github.com/apollowebdesigns/pirestservice.git
-</code>
-<br />
+```
 
 ### Compiling Native Java code with JNI
 
@@ -82,25 +87,21 @@ raspberry pi!!!
 
 For a HelloWorld example create
 
-<code>
+```
 javac HelloWorld.java
-</code>
-<br />
+```
 
 Then, create a headers file for the C program, so the Java program can hook into it.
 
-<br />
-<code>
+```
 javah -jni HelloWorld
-</code>
-<br />
+```
 
 Create the C file with desired code in -
 
 For a Hello World example, use this file
 
-<br />
-<code>
+```
  #include <jni.h>
  #include <stdio.h>
  #include "HelloWorld.h"
@@ -111,24 +112,19 @@ For a Hello World example, use this file
      printf("Hello World!\n");
      return;
  }
-</code>
-<br />
-
+```
 
 Create a shared library for the C code to be accessed by Java
 
-<br />
-<code>
+```
 gcc -shared -I/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include -I/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/include/linux  HelloWorld.c -o libHelloWorld.so
-</code>
-<br />
+```
 
 When in the current directory of the running file run for the HelloWorld example
 
-<code>
+```
 java -Djava.library.path=. HelloWorld
-</code>
-<br />
+```
 
 Here is a website for more info
 
@@ -138,7 +134,7 @@ https://www.java-tips.org/other-api-tips-100035/148-jni/1378-simple-example-of-u
 
 On the raspberry pi, the ip address is emailed out.
 
-<code>
+```
 
 ##
 # Host Database
@@ -150,9 +146,9 @@ On the raspberry pi, the ip address is emailed out.
 255.255.255.255 broadcasthost
 ::1             localhost
 
-</code>
-<br>
+```
 
 use the file from
-
+```
 /etc/hosts
+```
