@@ -31,6 +31,10 @@ check $PATH and move maven folder to /opt/ as this is where it should be for it 
 https://www.xianic.net/post/installing-maven-on-the-raspberry-pi/
 ```
 
+## Installing Raspberian
+
+Follow this [link](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)
+
 ## [Php installation](docs/phpguide.md)
 
 Raspberry Pi Camera
